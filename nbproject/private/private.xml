@@ -7,7 +7,9 @@
             <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/view/Home.fxml</file>
             <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/view/Publication.fxml</file>
             <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/images/ProfileImageTest.jpg</file>
+            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/persistance/dao/PublicationJPADAO.java</file>
             <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/persistance/dao/UserJPADAO.java</file>
+            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/persistance/model/PublicationCatalog.java</file>
             <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/control/HomeController.java</file>
             <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/control/PublicationController.java</file>
             <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/view/Login.fxml</file>

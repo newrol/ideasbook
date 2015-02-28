@@ -6,10 +6,8 @@
 package edu.hernandezvicente.daniel.control;
 
 import com.iesdealquerias.dam.ideasbook.User;
-import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -18,14 +16,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javax.swing.ImageIcon;
 
 /**
@@ -53,27 +48,17 @@ public class HomeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        FXMLLoader publicationLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/Publication.fxml"));
-        Parent publication;
-        PublicationController publicationController;
-        try {
-            na();
-        } catch (IOException ex) {
-            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    
+   
     }    
 
     public void na() throws IOException{
-        
         FXMLLoader publicationLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/Publication.fxml"));
         Parent publication;
         PublicationController publicationController;
             publication = (Parent)publicationLoader.load();
             publicationController = publicationLoader.<PublicationController>getController();        
-            
-        pMainPane.add(publication, 0, 0);
+            publicationController.setUser(user);
+            pMainPane.add(publication, 0, 0);
     }   
     
     
@@ -97,9 +82,10 @@ public class HomeController implements Initializable {
         mainController.showLogin();
     }
     
-    public void Refresh(){
+    public void Refresh() throws IOException{
         refreshuserImage();
         refreshUserData();
+        na();
     }
     
     public void refreshuserImage(){

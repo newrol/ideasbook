@@ -21,7 +21,6 @@ import javafx.stage.Stage;
  */
 public class MainController extends Application {
     Stage stage;
-    private User user;                              //Actual app user.
     private FXMLLoader loginLoader, homeLoader;     // FXML instances to control it later.         
     private Parent login, home;                     // Parent to control FXML views.
     private Scene sceneLogin, sceneHome;            // Diferent app scenes.
@@ -49,14 +48,15 @@ public class MainController extends Application {
      * View a new home Screen
      * @throws IOException 
      */
-    public void showHome() throws IOException{
-        login = null; // kill useless reference to liberate memory.
+    public void showHome(User user) throws IOException{
+       // login = null; // kill useless reference to liberate memory.
         //Charge fxml references in memory to acces them
         homeLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/Home.fxml"));
         home = (Parent)homeLoader.load();
         homeController = homeLoader.<HomeController>getController(); //Set Login view Controller to add params.
         homeController.setMainController(this);
         homeController.setUser(user);
+        homeController.Refresh(); //refres interface to show user values.
         //Show steps:
         sceneHome = new Scene(home);
         stage.setScene(sceneHome);
@@ -79,9 +79,4 @@ public class MainController extends Application {
         stage.setScene(sceneLogin);
         stage.show();
     }
-    
-    // public Access to user values:
-    public User getUser() {return user;}
-    public void setUser(User user) {this.user = user;}
-
 }

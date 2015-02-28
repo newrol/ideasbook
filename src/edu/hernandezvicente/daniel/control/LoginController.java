@@ -108,9 +108,8 @@ public class LoginController implements Initializable {
         
         
         try{
-            user = userCatalog.validateUser(user);            
-            mainController.setUser(user);
-            mainController.showHome();
+            user = userCatalog.validateUser(user);
+            mainController.showHome(user);
         }
         catch(javax.persistence.NoResultException e){
             System.out.println("no existe el usuario");

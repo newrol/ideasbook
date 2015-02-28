@@ -22,32 +22,13 @@
             </Label>
             <TextField layoutX="69.0" layoutY="9.0" prefHeight="25.0" prefWidth="372.0" />
             <Button layoutX="441.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="32.0" text="Button" />
-            <Label layoutX="614.0" layoutY="13.0" prefHeight="17.0" prefWidth="133.0" text="Nombre de usuario" textFill="WHITE">
+            <Label fx:id="lUserName" layoutX="495.0" layoutY="14.0" prefHeight="17.0" prefWidth="133.0" text="Nombre de usuario" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="747.0" layoutY="9.0" mnemonicParsing="false" text="Inicio" textFill="WHITE" underline="true" />
-            <Button layoutX="800.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Buscar Amigos" />
-            <MenuBar blendMode="OVERLAY" layoutX="958.0" layoutY="11.0">
-              <menus>
-                <Menu mnemonicParsing="false" text="File">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
-              </menus>
-            </MenuBar>
+            <Button layoutX="658.0" layoutY="9.0" mnemonicParsing="false" text="Inicio" textFill="WHITE" underline="true" />
+            <MenuBar blendMode="OVERLAY" layoutX="770.0" layoutY="9.0" prefHeight="25.0" prefWidth="216.0" />
             <Button fx:id="bExit" layoutX="1104.0" layoutY="9.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="54.0" text="Salir" />
          </children>
       </Pane>
@@ -55,12 +36,8 @@
    <left>
       <Pane prefHeight="578.0" prefWidth="272.0" styleClass="body" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="183.0" layoutX="50.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/ProfileImageTest.jpg" />
-               </image>
-            </ImageView>
-            <Label layoutX="44.0" layoutY="178.0" prefHeight="17.0" prefWidth="170.0" text="Nombre de Usuario" />
+            <ImageView fx:id="userImage" fitHeight="150.0" fitWidth="183.0" layoutX="50.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="lUserName1" layoutX="44.0" layoutY="178.0" prefHeight="17.0" prefWidth="170.0" text="Nombre de Usuario" />
             <Button layoutX="18.0" layoutY="205.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="220.0" text="Información " />
             <TreeView layoutX="14.0" layoutY="305.0" prefHeight="245.0" prefWidth="200.0" />
             <Label layoutX="18.0" layoutY="264.0" prefHeight="24.0" prefWidth="144.0" text="Arbol de actualizaciones" />
@@ -68,15 +45,16 @@
       </Pane>
    </left>
    <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="237.0" layoutY="384.0" prefHeight="131.0" prefWidth="379.0" text="Muro del Usuario">
-               <font>
-                  <Font size="47.0" />
-               </font>
-            </Label>
-            <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;Qué hay de nuevo?&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="260.0" prefWidth="898.0" />
-         </children>
-      </Pane>
+      <GridPane fx:id="pMainPane" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
    </center>
 </BorderPane>

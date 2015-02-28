@@ -31,7 +31,9 @@ public class JPADAO<T,K> implements IDAO<T, K> {
     
     @Override
     public T create(T t) {
+        entityManager.getTransaction().begin();
         entityManager.persist(t);
+        entityManager.getTransaction().commit();
         return t;
     }
 

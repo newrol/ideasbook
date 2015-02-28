@@ -15,12 +15,10 @@ import javafx.fxml.Initializable;
  *
  * @author Daniel
  */
-public class UserMainPageController implements Initializable {
+public class HomeController implements Initializable {
     private User user;
-    
-    public UserMainPageController(User user){
-        this.user = user;
-    }
+    private MainController mainController;
+
     
     /**
      * Initializes the controller class.
@@ -29,5 +27,20 @@ public class UserMainPageController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public MainController getMainController() {
+        return mainController;
+    }
+
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
 }

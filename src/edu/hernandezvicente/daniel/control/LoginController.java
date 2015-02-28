@@ -7,6 +7,7 @@ package edu.hernandezvicente.daniel.control;
 
 import com.iesdealquerias.dam.ideasbook.User;
 import edu.hernandezvicente.daniel.persistance.dao.UserJPADAO;
+import java.io.IOException;
 
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -69,15 +70,20 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
         userDAO = new UserJPADAO(); // 
         fillAgeCombos();            //Fill up all comboBox        
     }
     
     
-    public void join(){
-        
+    public MainController getMainController() {
+        return mainController;
     }
+
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
+    
+
     /**
      * Method to registrate a new user.
      */
@@ -90,13 +96,11 @@ public class LoginController implements Initializable {
         user.setAge(LocalDateTime.now().getYear() - (int) cYear.getValue());
         user.setPhoto(new byte[12]);
         user.setSince(new Date());
-        userDAO.getEntityManager().getTransaction().begin();
         userDAO.create(user);
-        userDAO.getEntityManager().getTransaction().commit();
     }
     
     
-    public void validateUser(){
+    public void validateUser() throws IOException{
         User user = new User();
         user.setName(tLogginUser.getText());
         user.setPassword(tLogginPassword.getText());
@@ -104,9 +108,7 @@ public class LoginController implements Initializable {
         
         try{
             user = userDAO.validateUser(user);            
-            //mainController.setUser();
-            
-            
+            mainController.setUser(user);
             mainController.showHome();
         }
         catch(javax.persistence.NoResultException e){

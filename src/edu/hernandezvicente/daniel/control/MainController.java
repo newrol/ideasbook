@@ -20,17 +20,18 @@ import javafx.stage.Stage;
  * @author Daniel 
  */
 public class MainController extends Application {
-    private Stage stage;
-    private User user;
-    private FXMLLoader loginLoader;
-    private FXMLLoader homeLoader;
-    private Parent login;
-    private Parent home;
-    private Scene sceneLogin;
-    private Scene sceneHome;
-    private LoginController loginController;
-    private HomeController homeController;
+    Stage stage;
+    private User user;                              //Actual app user.
+    private FXMLLoader loginLoader, homeLoader;     // FXML instances to control it later.         
+    private Parent login, home;                     // Parent to control FXML views.
+    private Scene sceneLogin, sceneHome;            // Diferent app scenes.
+    private LoginController loginController;        //Login view Contoller.
+    private HomeController homeController;          //Home view Controller.
     
+    /**
+     * Launch the app
+     * @param args 
+     */
     public static void main(String[] args) {
         //static method needly to run the app
         Application.launch(args);
@@ -40,63 +41,46 @@ public class MainController extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        this.stage = stage;
-        //charge in memroy xml view...
-        //URL format must be as here to work:
-        
+        this.stage = stage; //Charge the stage to control views.
+        //Charge fxml references in memory to acces them later.
         loginLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/Login.fxml")); 
-        homeLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/Home.fxml"));
-//        
-//        login = (Parent)loginLoader.load();
-//        loginController = loginLoader.<LoginController>getController();
-//        loginController.setMainController(this);
-//        
-// //       loggin = FXMLLoader.load(getClass().getResource("/edu/hernandezvicente/daniel/view/Login.fxml"));
-//        home = FXMLLoader.load(getClass().getResource("/edu/hernandezvicente/daniel/view/UserMainPage.fxml"));       
-        showLogin();
-        //Create a new scene to view that in screen:
-        //Scene scene = new Scene(root,tamanio.width,tamanio.height);
-        //stage.setMaximized(true);
-//        
-//        
-//        sceneLogin = new Scene(login);
-//        sceneHome = new Scene(home);    
-//        DoubleProperty sceneWidth = new SimpleDoubleProperty();
-//        sceneWidth.bind(sceneLogin.widthProperty());
-//        sceneWidth.bind(sceneHome.widthProperty());
-//        //bind xml file to over scene:
-//        stage.setScene(sceneLogin);
-        //show the scene:
-       
-    //    stage.show();
+        homeLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/Home.fxml"));     
+        showLogin(); //Run loggin when the app is launched.
     }
     
-        public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
+    /**
+     * View a new home Screen
+     * @throws IOException 
+     */
     public void showHome() throws IOException{
-        login = null;
+        login = null; // kill useless reference to liberate memory.
         home = (Parent)homeLoader.load();
-        homeController = homeLoader.<HomeController>getController();
+        homeController = homeLoader.<HomeController>getController(); //Set Login view Controller to add params.
         homeController.setMainController(this);
         homeController.setUser(user);
+        //Show steps:
         sceneHome = new Scene(home);
         stage.setScene(sceneHome);
         stage.show();
     }
     
+    /**
+     * View a new loggin screen
+     * @throws IOException 
+     */
     public void showLogin() throws IOException{
-        home = null;
+        home = null; // kill useless reference to liberate memory in case that it exist.
         login = (Parent)loginLoader.load();
-        loginController = loginLoader.<LoginController>getController();
+        loginController = loginLoader.<LoginController>getController(); //Set home view controller to add params.
         loginController.setMainController(this);
+        //show steps
         sceneLogin = new Scene(login);
         stage.setScene(sceneLogin);
         stage.show();
     }
+    
+    // public Access to user values:
+    public User getUser() {return user;}
+    public void setUser(User user) {this.user = user;}
+
 }

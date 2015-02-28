@@ -41,10 +41,7 @@ public class MainController extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        this.stage = stage; //Charge the stage to control views.
-        //Charge fxml references in memory to acces them later.
-        loginLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/Login.fxml")); 
-        homeLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/Home.fxml"));     
+        this.stage = stage; //Charge the stage to control views. 
         showLogin(); //Run loggin when the app is launched.
     }
     
@@ -54,6 +51,8 @@ public class MainController extends Application {
      */
     public void showHome() throws IOException{
         login = null; // kill useless reference to liberate memory.
+        //Charge fxml references in memory to acces them
+        homeLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/Home.fxml"));
         home = (Parent)homeLoader.load();
         homeController = homeLoader.<HomeController>getController(); //Set Login view Controller to add params.
         homeController.setMainController(this);
@@ -70,6 +69,8 @@ public class MainController extends Application {
      */
     public void showLogin() throws IOException{
         home = null; // kill useless reference to liberate memory in case that it exist.
+        //Charge fxml references in memory to acces them
+        loginLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/Login.fxml"));
         login = (Parent)loginLoader.load();
         loginController = loginLoader.<LoginController>getController(); //Set home view controller to add params.
         loginController.setMainController(this);

@@ -7,6 +7,7 @@ package edu.hernandezvicente.daniel.control;
 
 import com.iesdealquerias.dam.ideasbook.User;
 import edu.hernandezvicente.daniel.persistance.dao.UserJPADAO;
+import edu.hernandezvicente.daniel.persistance.model.UserCatalog;
 import java.io.IOException;
 
 import java.net.URL;
@@ -32,7 +33,7 @@ import javafx.scene.control.TextField;
 public class LoginController implements Initializable {
     private MainController mainController;
     // peristance user object declaration:
-    private UserJPADAO userDAO;
+    private UserCatalog userCatalog;
     
     //fxml switch object declaration between registration file and this controller.
     @FXML
@@ -70,7 +71,7 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        userDAO = new UserJPADAO(); // 
+        userCatalog = new UserCatalog(); // 
         fillAgeCombos();            //Fill up all comboBox        
     }
     
@@ -96,7 +97,7 @@ public class LoginController implements Initializable {
         user.setAge(LocalDateTime.now().getYear() - (int) cYear.getValue());
         user.setPhoto(new byte[12]);
         user.setSince(new Date());
-        userDAO.create(user);
+        userCatalog.CreateUser(user);
     }
     
     
@@ -107,7 +108,7 @@ public class LoginController implements Initializable {
         
         
         try{
-            user = userDAO.validateUser(user);            
+            user = userCatalog.validateUser(user);            
             mainController.setUser(user);
             mainController.showHome();
         }

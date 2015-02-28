@@ -27,9 +27,9 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="776.0" layoutY="9.0" mnemonicParsing="false" text="Inicio" textFill="WHITE" underline="true" />
-            <Button layoutX="858.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Buscar Amigos" />
-            <MenuBar blendMode="OVERLAY" layoutX="1013.0" layoutY="9.0">
+            <Button layoutX="747.0" layoutY="9.0" mnemonicParsing="false" text="Inicio" textFill="WHITE" underline="true" />
+            <Button layoutX="800.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Buscar Amigos" />
+            <MenuBar blendMode="OVERLAY" layoutX="958.0" layoutY="11.0">
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
@@ -48,6 +48,7 @@
                 </Menu>
               </menus>
             </MenuBar>
+            <Button fx:id="bExit" layoutX="1104.0" layoutY="9.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="54.0" text="Salir" />
          </children>
       </Pane>
    </top>

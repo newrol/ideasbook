@@ -6,9 +6,12 @@
 package edu.hernandezvicente.daniel.control;
 
 import com.iesdealquerias.dam.ideasbook.User;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
@@ -18,7 +21,6 @@ import javafx.fxml.Initializable;
 public class HomeController implements Initializable {
     private User user;
     private MainController mainController;
-
     
     /**
      * Initializes the controller class.
@@ -43,4 +45,9 @@ public class HomeController implements Initializable {
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
+    
+    public void exit() throws IOException{
+        mainController.showLogin();
+    }
+    
 }

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1170.0" styleClass="..\stiles\Login.css" stylesheets="@../stiles/Login.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.hernandezvicente.daniel.control.LoginController">
+   <top>
+      <Pane id="headerPane" prefHeight="86.0" prefWidth="200.0" styleClass="headerPane" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="73.0" layoutY="33.0" prefHeight="45.0" prefWidth="194.0" text="ideasbook" textFill="WHITE">
+               <font>
+                  <Font name="Calibri" size="45.0" />
+               </font>
+            </Label>
+            <Button fx:id="bJoin" defaultButton="true" layoutX="1027.0" layoutY="57.0" mnemonicParsing="false" onAction="#validateUser" prefHeight="25.0" prefWidth="64.0" text="entrar" />
+            <Label layoutX="681.0" layoutY="35.0" text="Usuario" textFill="WHITE" />
+            <TextField id="tLogginUser" fx:id="tLogginUser" layoutX="681.0" layoutY="57.0" />
+            <TextField id="tLogginPassword" fx:id="tLogginPassword" layoutX="854.0" layoutY="57.0" />
+            <Label contentDisplay="TOP" layoutX="854.0" layoutY="35.0" text="Contraseña" textFill="WHITE" />
+         </children>
+      </Pane>
+   </top>
+   <left>
+      <Pane prefHeight="534.0" prefWidth="643.0" styleClass="body" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView id="headerImage" fx:id="headerImage" fitHeight="385.0" fitWidth="489.0" layoutX="65.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/LoginPhoto.png" />
+               </image></ImageView>
+         </children>
+      </Pane>
+   </left>
+   <center>
+      <Pane id="rigthPanel" prefHeight="534.0" prefWidth="789.0" styleClass="body" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="28.0" layoutY="22.0" prefHeight="72.0" prefWidth="191.0" text="Registrarte">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <TextField id="tName" fx:id="tName" layoutX="29.0" layoutY="94.0" prefHeight="39.0" prefWidth="384.0" promptText="Nombre">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField id="tMail1" fx:id="tMail" layoutX="28.0" layoutY="153.0" prefHeight="39.0" prefWidth="387.0" promptText="Correo electrónico">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></TextField>
+            <TextField id="tMail2" fx:id="tMail2" layoutX="28.0" layoutY="208.0" prefHeight="39.0" prefWidth="387.0" promptText="Vuelve a introducir el correo electrónico">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></TextField>
+            <Label layoutX="28.0" layoutY="322.0" prefHeight="27.0" prefWidth="176.0" text="Fecha de nacimiento">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <ComboBox id="cDay" fx:id="cDay" layoutX="28.0" layoutY="359.0" prefHeight="25.0" prefWidth="58.0" promptText="D" />
+            <ComboBox id="cMonth" fx:id="cMonth" layoutX="95.0" layoutY="359.0" prefHeight="25.0" prefWidth="58.0" promptText="M" />
+            <ComboBox id="cYear" fx:id="cYear" layoutX="161.0" layoutY="359.0" prefHeight="25.0" prefWidth="70.0" promptText="A" />
+            <Button id="bResgister" fx:id="bRegister" layoutX="31.0" layoutY="418.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="42.0" prefWidth="185.0" styleClass="registerButton" text="Registrarte" textFill="WHITE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </Button>
+            <PasswordField id="tPassword" fx:id="tPassword" layoutX="28.0" layoutY="267.0" prefHeight="39.0" prefWidth="387.0" promptText="Contraseña">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </PasswordField>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

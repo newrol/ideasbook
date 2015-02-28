@@ -1,0 +1,20 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+
+
+.headerPane {
+    -fx-background-color: #3A5795;
+    -fx-scale-x: 100%;
+    -fx-scale-y: 100%;    
+}
+
+.logo{
+    -fx-background-color: #FFFFFF;
+}
+
+
+.body{
+    -fx-background-color: #D3D8E8;
+}

@@ -3,7 +3,8 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
+	<parameter name="USER_ID" class="java.lang.String"/>
+	<queryString>
 		<![CDATA[SELECT
      ideasbook_friendship.`type1`,
      ideasbook_friendship.`date`,
@@ -18,7 +19,7 @@
 FROM
      `ideasbook`.`friendship` ideasbook_friendship INNER JOIN `ideasbook`.`user` ideasbook_user ON ideasbook_friendship.`user1` = ideasbook_user.`id`
 WHERE
-     ideasbook_friendship.user2 = 1
+     ideasbook_friendship.user2 = $P{USER_ID}
 UNION
 SELECT
      `ideasbook`.`friendship`.`type2`,
@@ -34,7 +35,7 @@ SELECT
 FROM
      `ideasbook`.`friendship` INNER JOIN `ideasbook`.`user` ON `ideasbook`.`friendship`.`user2` = `ideasbook`.`user`.`id`
 WHERE
-     ideasbook.friendship.user1 = 1]]>
+     ideasbook.friendship.user1 = $P{USER_ID}]]>
 	</queryString>
 	<field name="type1" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>

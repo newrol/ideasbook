@@ -7,7 +7,9 @@
 package edu.hernandezvicente.daniel.persistance.model;
 
 import com.iesdealquerias.dam.ideasbook.Publication;
+import com.iesdealquerias.dam.ideasbook.User;
 import edu.hernandezvicente.daniel.persistance.dao.PublicationJPADAO;
+import java.util.List;
 
 /**
  * 
@@ -22,5 +24,10 @@ public class PublicationCatalog {
     
     public void addPublication(Publication publication){
         publicationDAO.create(publication);
+    }
+    
+    public List<Publication> getLastPublications(User user){
+        
+        return null;
     }
 }

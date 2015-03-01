@@ -6,12 +6,11 @@
 package edu.hernandezvicente.daniel.control;
 
 import com.iesdealquerias.dam.ideasbook.User;
+import edu.hernandezvicente.daniel.persistance.model.UserCatalog;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,6 +28,7 @@ import javax.swing.ImageIcon;
  * @author Daniel
  */
 public class HomeController implements Initializable {
+    private UserCatalog userCatalog;
     private User user;
     private MainController mainController;
     
@@ -48,10 +48,12 @@ public class HomeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-   
+       userCatalog = new UserCatalog();
     }    
 
     public void na() throws IOException{
+        
+        //test create publication:
         FXMLLoader publicationLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/Publication.fxml"));
         Parent publication;
         PublicationController publicationController;
@@ -59,6 +61,16 @@ public class HomeController implements Initializable {
             publicationController = publicationLoader.<PublicationController>getController();        
             publicationController.setUser(user);
             pMainPane.add(publication, 0, 0);
+       
+       //Test show last Publications:
+        FXMLLoader publicationViewLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/PublicationView.fxml"));
+        Parent publicationView;
+        PublicationViewController publicationViewController;
+        publicationView = (Parent)publicationViewLoader.load();
+        publicationViewController = publicationViewLoader.<PublicationViewController>getController();        
+        publicationViewController.setPublication(user.getPublicationList().get(0));
+        publicationViewController.fillPublication();
+        pMainPane.add(publicationView, 0, 2);
     }   
     
     
@@ -86,11 +98,11 @@ public class HomeController implements Initializable {
         refreshuserImage();
         refreshUserData();
         na();
+        userCatalog.getFriends(user);
     }
     
     public void refreshuserImage(){
-       byte []userPhoto = user.getPhoto();
-       ImageIcon imageIcon;        
+       byte []userPhoto = user.getPhoto();        
        
        if(userPhoto.length < 15)
             userImage.setImage(new Image(HomeController.class.getResourceAsStream(

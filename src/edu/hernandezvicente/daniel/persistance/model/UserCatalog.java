@@ -8,6 +8,7 @@ package edu.hernandezvicente.daniel.persistance.model;
 
 import com.iesdealquerias.dam.ideasbook.User;
 import edu.hernandezvicente.daniel.persistance.dao.UserJPADAO;
+import java.util.List;
 
 /**
  * 
@@ -37,6 +38,13 @@ public class UserCatalog {
     public User validateUser(User user){
        return userDao.validateUser(user);
     }
-    
+    /**
+     * Find user friends into database.
+     * @param user
+     * @return A list of friends 
+     */
+    public List<User> getFriends(User user){
+        return userDao.finduserFriends(user);
+    }
     
 }

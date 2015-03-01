@@ -15,4 +15,5 @@ import java.util.List;
  */
 public interface IPublicationDAO {
     public List<Publication> getUserPublications(User user);
+    public List<Publication> getLastPublications(User user);
 }

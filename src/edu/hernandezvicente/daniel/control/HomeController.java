@@ -10,16 +10,20 @@ import edu.hernandezvicente.daniel.persistance.model.UserCatalog;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javax.swing.ImageIcon;
 
 /**
@@ -38,9 +42,12 @@ public class HomeController implements Initializable {
     private Label lUserName;
     @FXML
     private Label lUserName1;
-    
-    @FXML 
-    private GridPane pMainPane;
+//    
+//    @FXML 
+//    private GridPane pMainPane;
+//    
+   @FXML
+   private ScrollPane sc;
     
     
     /**
@@ -52,6 +59,8 @@ public class HomeController implements Initializable {
     }    
 
     public void na() throws IOException{
+        GridPane pane = new GridPane();
+        sc.setContent(pane);
         
         //test create publication:
         FXMLLoader publicationLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/Publication.fxml"));
@@ -60,17 +69,34 @@ public class HomeController implements Initializable {
             publication = (Parent)publicationLoader.load();
             publicationController = publicationLoader.<PublicationController>getController();        
             publicationController.setUser(user);
-            pMainPane.add(publication, 0, 0);
+            pane.add(publication, 0, 0);
        
        //Test show last Publications:
-        FXMLLoader publicationViewLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/PublicationView.fxml"));
-        Parent publicationView;
-        PublicationViewController publicationViewController;
-        publicationView = (Parent)publicationViewLoader.load();
-        publicationViewController = publicationViewLoader.<PublicationViewController>getController();        
-        publicationViewController.setPublication(user.getPublicationList().get(0));
-        publicationViewController.fillPublication();
-        pMainPane.add(publicationView, 0, 2);
+//        FXMLLoader publicationViewLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/PublicationView.fxml"));
+//        Parent publicationView;
+//        PublicationViewController publicationViewController;
+//        publicationView = (Parent)publicationViewLoader.load();
+//        publicationViewController = publicationViewLoader.<PublicationViewController>getController();        
+//        publicationViewController.setPublication(user.getPublicationList().get(0));
+//        publicationViewController.fillPublication();
+//        pMainPane.add(publicationView, 0, 1);
+//       
+        //Show various publications:
+        List<FXMLLoader> publicationsviewLoader = new ArrayList<>();
+        List<Parent> publicationsView = new ArrayList<>();
+        List<PublicationViewController> publicationsViewController = new ArrayList<>();
+        
+        for(int i = 0; i < user.getPublicationList().size(); i++){
+            publicationsviewLoader.add(new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/PublicationView.fxml")));
+            publicationsView.add((Parent)publicationsviewLoader.get(i).load());
+            publicationsViewController.add(publicationsviewLoader.get(i).<PublicationViewController>getController());
+            publicationsViewController.get(i).setPublication(user.getPublicationList().get(i));
+            publicationsViewController.get(i).fillPublication();
+            pane.addRow(i+1, publicationsView.get(i));
+            //pMainPane.add(publicationsView.get(i), 0, i+8);
+        }
+        
+        
     }   
     
     

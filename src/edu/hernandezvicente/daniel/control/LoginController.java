@@ -72,7 +72,8 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         userCatalog = new UserCatalog(); // 
-        fillAgeCombos();            //Fill up all comboBox        
+        fillAgeCombos();            //Fill up all comboBox
+        bResgister.setId("bRegister");
     }
     
     
@@ -147,5 +148,17 @@ public class LoginController implements Initializable {
         options = FXCollections.observableArrayList(years);
         cYear.setItems(options);
     }
+    
+    /**
+     * Control if the loggin button is enable or disabled
+     */
+    public void testEnableLogin(){
+        if(tLogginUser.getText().equals("") && tPassword.getText().equals("")){
+            bJoin.setDisable(true);
+        }
+        else
+            bJoin.setDisable(false);
+    }
 }
 
+  

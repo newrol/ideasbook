@@ -18,10 +18,10 @@
                   <Font name="Calibri" size="45.0" />
                </font>
             </Label>
-            <Button fx:id="bJoin" defaultButton="true" layoutX="1027.0" layoutY="57.0" mnemonicParsing="false" onAction="#validateUser" prefHeight="25.0" prefWidth="64.0" text="entrar" />
+            <Button fx:id="bJoin" defaultButton="true" disable="true" layoutX="1027.0" layoutY="57.0" mnemonicParsing="false" onAction="#validateUser" prefHeight="25.0" prefWidth="64.0" text="entrar" />
             <Label layoutX="681.0" layoutY="35.0" text="Usuario" textFill="WHITE" />
-            <TextField id="tLogginUser" fx:id="tLogginUser" layoutX="681.0" layoutY="57.0" />
-            <TextField id="tLogginPassword" fx:id="tLogginPassword" layoutX="854.0" layoutY="57.0" />
+            <TextField id="tLogginUser" fx:id="tLogginUser" layoutX="681.0" layoutY="57.0" onKeyTyped="#testEnableLogin" />
+            <TextField id="tLogginPassword" fx:id="tLogginPassword" layoutX="854.0" layoutY="57.0" onKeyTyped="#testEnableLogin" />
             <Label contentDisplay="TOP" layoutX="854.0" layoutY="35.0" text="Contraseña" textFill="WHITE" />
          </children>
       </Pane>
@@ -64,7 +64,7 @@
             <ComboBox id="cDay" fx:id="cDay" layoutX="28.0" layoutY="359.0" prefHeight="25.0" prefWidth="58.0" promptText="D" />
             <ComboBox id="cMonth" fx:id="cMonth" layoutX="95.0" layoutY="359.0" prefHeight="25.0" prefWidth="58.0" promptText="M" />
             <ComboBox id="cYear" fx:id="cYear" layoutX="161.0" layoutY="359.0" prefHeight="25.0" prefWidth="70.0" promptText="A" />
-            <Button id="bResgister" fx:id="bRegister" layoutX="31.0" layoutY="418.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="42.0" prefWidth="185.0" styleClass="registerButton" text="Registrarte" textFill="WHITE">
+            <Button id="bRegister" fx:id="bRegister" layoutX="31.0" layoutY="418.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="42.0" prefWidth="185.0" styleClass="registerButton" text="Registrarte" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>

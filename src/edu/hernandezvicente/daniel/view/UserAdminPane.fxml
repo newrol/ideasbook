@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="578.0" prefWidth="898.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="edu.hernandezvicente.daniel.control.UserAdminPaneController">
+   <children>
+      <ImageView fx:id="vPhoto" fitHeight="204.0" fitWidth="206.0" layoutX="41.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="49.0" layoutY="42.0" text="Imagen de usaurio" />
+      <TextField fx:id="tName" editable="false" layoutX="394.0" layoutY="59.0" />
+      <Label layoutX="266.0" layoutY="63.0" text="Nombre:" />
+      <Label layoutX="266.0" layoutY="102.0" text="Cambiar Correo" />
+      <TextField fx:id="tMail" layoutX="394.0" layoutY="98.0" />
+      <Label layoutX="261.0" layoutY="144.0" text="Cambiar contraseña" />
+      <PasswordField fx:id="tPassword" layoutX="394.0" layoutY="140.0" />
+      <Button layoutX="443.0" layoutY="186.0" mnemonicParsing="false" onAction="#changeValues" prefHeight="25.0" prefWidth="99.0" text="Modificar" />
+   </children>
+</AnchorPane>

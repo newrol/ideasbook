@@ -57,4 +57,11 @@ public class UserCatalog {
         return userDao.findByNameLike(username);
     }
     
+    /**
+     * Update user values.
+     * @param user 
+     */
+    public void modifyUser(User user){
+        userDao.update(user);
+    }    
 }

@@ -24,9 +24,6 @@ import javafx.scene.image.Image;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-import javax.swing.ImageIcon;
-
 /**
  * FXML Controller class
  *
@@ -41,9 +38,7 @@ public class HomeController implements Initializable {
     private ImageView userImage;
     @FXML
     private Label lUserName;
-    @FXML
-    private Label lUserName1;
-      
+  
    @FXML
    private ScrollPane sc;
     
@@ -66,11 +61,11 @@ public class HomeController implements Initializable {
         FXMLLoader publicationLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/Publication.fxml"));
         Parent publication;
         PublicationController publicationController;
-            publication = (Parent)publicationLoader.load();
-            publicationController = publicationLoader.<PublicationController>getController();        
-            publicationController.setUser(user);
-            pane.add(publication, 0, 0);
-       
+        publication = (Parent)publicationLoader.load();
+        publicationController = publicationLoader.<PublicationController>getController();        
+        publicationController.setUser(user);
+        pane.add(publication, 0, 0);
+
        //Test show last Publications:
 //        FXMLLoader publicationViewLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/PublicationView.fxml"));
 //        Parent publicationView;
@@ -157,10 +152,12 @@ public class HomeController implements Initializable {
        }              
     }
     
+    /**
+     * Refresh user values
+     */
     public void refreshUserData(){
         String userName = user.getName();
         lUserName.setText(userName);
-        lUserName1.setText(userName);
     }
     
     public void ChangeImage(){        
@@ -178,7 +175,23 @@ public class HomeController implements Initializable {
             mainController.showHome(user);
         }
         catch(javax.persistence.NoResultException e){
-            System.out.println("no existe el usuario");
+            GridPane pane = new GridPane();
+            sc.setContent(pane);
+            pane.add(new Label("User not found"), 0, 0);
         }
+    }
+   
+   public void panelUserValues() throws IOException{
+        GridPane pane = new GridPane();
+        sc.setContent(pane); 
+        FXMLLoader userAdminPaneLodader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/UserAdminPane.fxml"));
+        Parent userAdminPane;
+        UserAdminPaneController userAdminPaneController;
+        userAdminPane = (Parent)userAdminPaneLodader.load();
+        userAdminPaneController = userAdminPaneLodader.<UserAdminPaneController>getController();        
+        userAdminPaneController.setUser(user);
+        userAdminPaneController.setHomeController(this);
+        userAdminPaneController.FillValues();
+        pane.add(userAdminPane, 0, 0);
    }
 }

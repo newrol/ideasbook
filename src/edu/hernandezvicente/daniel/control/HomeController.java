@@ -134,7 +134,7 @@ public class HomeController implements Initializable {
         mainController.showLogin();
     }
     
-    public void Refresh() throws IOException{
+    public void refresh() throws IOException{
         refreshuserImage();
         refreshUserData();
         wall();
@@ -160,8 +160,6 @@ public class HomeController implements Initializable {
         lUserName.setText(userName);
     }
     
-    public void ChangeImage(){        
-    }
     
    /**
     * search text search ser and if is found I´ll be shown.
@@ -172,7 +170,7 @@ public class HomeController implements Initializable {
        User friend;
        try{
             user = userCatalog.searchUserByName(tSearchUser.getText());
-            mainController.showHome(user);
+            mainController.showUserWall(user);
         }
         catch(javax.persistence.NoResultException e){
             GridPane pane = new GridPane();

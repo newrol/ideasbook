@@ -6,6 +6,7 @@
 
 package edu.hernandezvicente.daniel.persistance.model;
 
+import com.iesdealquerias.dam.ideasbook.Friendship;
 import com.iesdealquerias.dam.ideasbook.User;
 import edu.hernandezvicente.daniel.persistance.dao.UserJPADAO;
 import java.util.List;
@@ -64,4 +65,9 @@ public class UserCatalog {
     public void modifyUser(User user){
         userDao.update(user);
     }    
+    
+    public Friendship getusersFriendShip(User user1, User user2){
+        return userDao.findUserFriendship(user1, user2);
+    }
+            
 }

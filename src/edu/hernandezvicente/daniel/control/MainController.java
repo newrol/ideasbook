@@ -48,7 +48,7 @@ public class MainController extends Application {
      * View a new home Screen
      * @throws IOException 
      */
-    public void showHome(User user) throws IOException{
+    public void showUserWall(User user) throws IOException{
        // login = null; // kill useless reference to liberate memory.
         //Charge fxml references in memory to acces them
         homeLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/Home.fxml"));
@@ -56,7 +56,7 @@ public class MainController extends Application {
         homeController = homeLoader.<HomeController>getController(); //Set Login view Controller to add params.
         homeController.setMainController(this);
         homeController.setUser(user);
-        homeController.Refresh(); //refres interface to show user values.
+        homeController.refresh(); //refres interface to show user values.
         //Show steps:
         sceneHome = new Scene(home);
         stage.setScene(sceneHome);

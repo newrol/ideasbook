@@ -17,4 +17,5 @@ public interface IUserDAO extends IDAO<User, Long> {
     public User validateUser(User user);
     public User findByNameLike(String name);
     public List<User> finduserFriends(User user);
+    public Friendship findUserFriendship(User user1, User user2);
 }

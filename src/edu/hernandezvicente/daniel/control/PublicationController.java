@@ -6,8 +6,6 @@
 
 package edu.hernandezvicente.daniel.control;
 
-import com.iesdealquerias.dam.ideasbook.Photo;
-import com.iesdealquerias.dam.ideasbook.Publication;
 import com.iesdealquerias.dam.ideasbook.Text;
 import com.iesdealquerias.dam.ideasbook.User;
 import edu.hernandezvicente.daniel.persistance.model.PublicationCatalog;
@@ -16,14 +14,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.application.Application;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
 /**
@@ -31,8 +27,8 @@ import javax.imageio.ImageIO;
  * @author Daniel 
  */
 public class PublicationController implements Initializable {
-    public User user;
-
+    private User user;
+    private HomeController HomeController;
     
     @FXML
     private TextArea tPublicationText;
@@ -46,7 +42,6 @@ public class PublicationController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         
     }
-    
     
     public void create() throws IOException{
         PublicationCatalog publicationCatalog = new PublicationCatalog();
@@ -62,9 +57,12 @@ public class PublicationController implements Initializable {
         
         publication.setPhoto(res);        
         publicationCatalog.addPublication(publication);
+        HomeController.refresh();        
     }    
     
-    //User get an set values:
+    //User get an set values and homeController:
     public User getUser() {return user;}
     public void setUser(User user) {this.user = user;}
+    public HomeController getHomeController() {return HomeController;}
+    public void setHomeController(HomeController HomeController) {this.HomeController = HomeController;}    
 }

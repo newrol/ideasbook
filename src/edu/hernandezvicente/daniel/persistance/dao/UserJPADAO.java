@@ -72,5 +72,14 @@ public class UserJPADAO extends JPADAO<User, Long> implements IUserDAO {
         
         return friendsList;
     }
+
+    @Override
+    public Friendship findUserFriendship(User user1, User user2) {
+        String query = "SELECT f FROM Friendship f WHERE f.user1 = ?1  AND f.user2 = ?2";
+        TypedQuery<Friendship> exeQuery = super.entityManager.createQuery(query, Friendship.class);
+        exeQuery.setParameter(1, user1);       //Query parameter 1
+        exeQuery.setParameter(2, user2);        
+        return exeQuery.getSingleResult();
+    }
 }
 

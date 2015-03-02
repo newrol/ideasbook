@@ -51,7 +51,7 @@ public class UserAdminPaneController implements Initializable {
         user.setPassword(tPassword.getText());
         //user.setPhoto();
         userCatalog.modifyUser(user);
-        homeController.Refresh();
+        homeController.refresh();
     }
     
     public void FillValues(){

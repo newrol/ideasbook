@@ -10,9 +10,11 @@ import com.athaydes.automaton.FXApp;
 import com.athaydes.automaton.FXer;
 import static com.athaydes.automaton.assertion.AutomatonMatcher.hasText;
 import edu.hernandezvicente.daniel.control.MainController;
+import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 import static org.hamcrest.MatcherAssert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,5 +40,4 @@ public class LogginButtonTest {
 //
 //        assertThat(fxer.getAt("my-tf"), hasText("Hello World!"));
     }
-
 }

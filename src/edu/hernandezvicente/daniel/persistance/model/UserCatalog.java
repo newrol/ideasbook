@@ -47,4 +47,14 @@ public class UserCatalog {
         return userDao.finduserFriends(user);
     }
     
+    /**
+     * Find users in database since their name.
+     * @param username
+     * @return User if the user is sent
+     * @exception if the user doesnt exist.
+     */
+    public User searchUserByName(String username){
+        return userDao.findByNameLike(username);
+    }
+    
 }

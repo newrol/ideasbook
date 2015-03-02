@@ -15,6 +15,6 @@ import java.util.List;
  */
 public interface IUserDAO extends IDAO<User, Long> {
     public User validateUser(User user);
-    public List<User> findByNameLike(String name);
+    public User findByNameLike(String name);
     public List<User> finduserFriends(User user);
 }

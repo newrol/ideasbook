@@ -20,16 +20,16 @@
                   <Font name="System Bold" size="19.0" />
                </font>
             </Label>
-            <TextField layoutX="69.0" layoutY="9.0" prefHeight="25.0" prefWidth="372.0" />
-            <Button layoutX="441.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="32.0" text="Button" />
-            <Label fx:id="lUserName" layoutX="495.0" layoutY="14.0" prefHeight="17.0" prefWidth="133.0" text="Nombre de usuario" textFill="WHITE">
+            <TextField fx:id="tSearchUser" layoutX="69.0" layoutY="9.0" prefHeight="25.0" prefWidth="372.0" />
+            <Button layoutX="447.0" layoutY="9.0" mnemonicParsing="false" onAction="#searchFriend" prefHeight="25.0" prefWidth="77.0" text="buscar" />
+            <Label fx:id="lUserName" layoutX="561.0" layoutY="15.0" prefHeight="17.0" prefWidth="133.0" text="Nombre de usuario" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="658.0" layoutY="9.0" mnemonicParsing="false" text="Inicio" textFill="WHITE" underline="true" />
-            <MenuBar blendMode="OVERLAY" layoutX="770.0" layoutY="9.0" prefHeight="25.0" prefWidth="216.0" />
+            <Button fx:id="init" layoutX="694.0" layoutY="9.0" mnemonicParsing="false" onAction="#wall" prefHeight="25.0" prefWidth="73.0" text="Inicio" textFill="WHITE" underline="true" />
             <Button fx:id="bExit" layoutX="1104.0" layoutY="9.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="54.0" text="Salir" />
+            <Button layoutX="792.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="77.0" text="amistades" textFill="WHITE" underline="true" />
          </children>
       </Pane>
    </top>

@@ -22,9 +22,11 @@ public class UserJPADAO extends JPADAO<User, Long> implements IUserDAO {
     }
 
     @Override
-    public List<User> findByNameLike(String name) {
-        //@TODO
-        return null;
+    public User findByNameLike(String name) {
+        String query = "SELECT u FROM User u where u.name = ?1";
+        TypedQuery<User> exeQuery = super.entityManager.createQuery(query, User.class);
+        exeQuery.setParameter(1, name);       //Query parameter 1
+        return exeQuery.getSingleResult();
     }
     
     /**

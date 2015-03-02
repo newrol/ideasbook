@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 
 import javafx.scene.image.ImageView;
@@ -42,13 +43,12 @@ public class HomeController implements Initializable {
     private Label lUserName;
     @FXML
     private Label lUserName1;
-//    
-//    @FXML 
-//    private GridPane pMainPane;
-//    
+      
    @FXML
    private ScrollPane sc;
     
+   @FXML
+   private TextField tSearchUser;
     
     /**
      * Initializes the controller class.
@@ -58,7 +58,7 @@ public class HomeController implements Initializable {
        userCatalog = new UserCatalog();
     }    
 
-    public void na() throws IOException{
+    public void wall() throws IOException{
         GridPane pane = new GridPane();
         sc.setContent(pane);
         
@@ -93,12 +93,31 @@ public class HomeController implements Initializable {
             publicationsViewController.get(i).setPublication(user.getPublicationList().get(i));
             publicationsViewController.get(i).fillPublication();
             pane.addRow(i+1, publicationsView.get(i));
-            //pMainPane.add(publicationsView.get(i), 0, i+8);
-        }
-        
-        
+        }        
     }   
     
+    /**
+     * Fill up friendWall if the friend is found. If user is not found I´ll shown a message
+     * @param user
+     * @throws IOException 
+     */
+    private void friendWall(User user) throws IOException{
+        GridPane pane = new GridPane();
+        sc.setContent(pane);        
+        List<FXMLLoader> publicationsviewLoader = new ArrayList<>();
+        List<Parent> publicationsView = new ArrayList<>();
+        List<PublicationViewController> publicationsViewController = new ArrayList<>();
+        
+        for(int i = 0; i < user.getPublicationList().size(); i++){
+            
+            publicationsviewLoader.add(new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/PublicationView.fxml")));
+            publicationsView.add((Parent)publicationsviewLoader.get(i).load());
+            publicationsViewController.add(publicationsviewLoader.get(i).<PublicationViewController>getController());
+            publicationsViewController.get(i).setPublication(user.getPublicationList().get(i));
+            publicationsViewController.get(i).fillPublication();
+            pane.addRow(i+1, publicationsView.get(i));
+        }
+    }
     
     public User getUser() {
         return user;
@@ -123,7 +142,7 @@ public class HomeController implements Initializable {
     public void Refresh() throws IOException{
         refreshuserImage();
         refreshUserData();
-        na();
+        wall();
         userCatalog.getFriends(user);
     }
     
@@ -144,7 +163,22 @@ public class HomeController implements Initializable {
         lUserName1.setText(userName);
     }
     
-    public void ChangeImage(){
-        
+    public void ChangeImage(){        
     }
+    
+   /**
+    * search text search ser and if is found I´ll be shown.
+    * @throws IOException 
+    * 
+    */ 
+   public void searchFriend() throws IOException{
+       User friend;
+       try{
+            user = userCatalog.searchUserByName(tSearchUser.getText());
+            mainController.showHome(user);
+        }
+        catch(javax.persistence.NoResultException e){
+            System.out.println("no existe el usuario");
+        }
+   }
 }

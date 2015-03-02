@@ -73,7 +73,7 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         userCatalog = new UserCatalog(); // 
         fillAgeCombos();            //Fill up all comboBox
-        bResgister.setId("bRegister");
+        
     }
     
     

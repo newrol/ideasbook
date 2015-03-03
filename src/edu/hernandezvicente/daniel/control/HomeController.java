@@ -64,6 +64,7 @@ public class HomeController implements Initializable {
         publication = (Parent)publicationLoader.load();
         publicationController = publicationLoader.<PublicationController>getController();        
         publicationController.setUser(user);
+        publicationController.setHomeController(this);
         pane.add(publication, 0, 0);
 
        //Test show last Publications:

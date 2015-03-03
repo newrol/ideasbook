@@ -9,18 +9,15 @@ package edu.hernandezvicente.daniel.control;
 import com.iesdealquerias.dam.ideasbook.Text;
 import com.iesdealquerias.dam.ideasbook.User;
 import edu.hernandezvicente.daniel.persistance.model.PublicationCatalog;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
+import edu.hernandezvicente.daniel.tools.ImageTools;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
-import javax.imageio.ImageIO;
 
 /**
  * 
@@ -29,6 +26,9 @@ import javax.imageio.ImageIO;
 public class PublicationController implements Initializable {
     private User user;
     private HomeController HomeController;
+    private ImageTools imageTools;
+    private PublicationCatalog publicationCatalog;
+    Text publication;
     
     @FXML
     private TextArea tPublicationText;
@@ -40,25 +40,23 @@ public class PublicationController implements Initializable {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+        imageTools = new ImageTools();
+        publicationCatalog = new PublicationCatalog();
+        publication = new Text();
     }
     
     public void create() throws IOException{
-        PublicationCatalog publicationCatalog = new PublicationCatalog();
-        Text publication = new Text();
-        publication.setId((long) 2);
+        publication.setId((long) user.getId());
         publication.setUser(user);
         publication.setText(tPublicationText.getText());
-        
-        BufferedImage bImage = SwingFXUtils.fromFXImage(iPublicationImage.getImage(), null);
-        ByteArrayOutputStream s = new ByteArrayOutputStream();
-        ImageIO.write(bImage, "png", s);
-        byte[] res  = s.toByteArray();
-        
-        publication.setPhoto(res);        
+        publication.setPhoto(imageTools.wrapImage(iPublicationImage.getImage()));        
         publicationCatalog.addPublication(publication);
         HomeController.refresh();        
     }    
+    
+    public void changePhoto() throws IOException{
+        iPublicationImage.setImage(imageTools.LoadImage());
+    }
     
     //User get an set values and homeController:
     public User getUser() {return user;}

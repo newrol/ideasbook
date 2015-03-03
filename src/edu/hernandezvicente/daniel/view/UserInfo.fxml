@@ -7,13 +7,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="226.0" prefWidth="898.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="edu.hernandezvicente.daniel.control.UserInfoController">
+<AnchorPane id="AnchorPane" prefHeight="226.0" prefWidth="898.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.hernandezvicente.daniel.control.UserInfoController">
    <children>
       <Label layoutX="22.0" layoutY="23.0" text="Foto:" />
       <ImageView fx:id="Vphoto" fitHeight="167.0" fitWidth="183.0" layoutX="22.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="lName" layoutX="255.0" layoutY="41.0" text="Nombre" />
-      <Button fx:id="bFriendship" layoutX="397.0" layoutY="152.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="bFriendship" layoutX="397.0" layoutY="152.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="Button" />
       <Label fx:id="lMail" layoutX="255.0" layoutY="79.0" text="Correo:" />
    </children>
 </AnchorPane>

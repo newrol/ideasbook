@@ -5,6 +5,7 @@
  */
 package edu.hernandezvicente.daniel.persistance.daointerfaces;
 
+import com.iesdealquerias.dam.ideasbook.Friendship;
 import edu.hernandezvicente.daniel.persistance.daointerfaces.IDAO;
 import com.iesdealquerias.dam.ideasbook.User;
 import java.util.List;

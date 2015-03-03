@@ -7,10 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="202.0" prefWidth="899.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="edu.hernandezvicente.daniel.control.PublicationController">
+<AnchorPane id="AnchorPane" prefHeight="202.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.hernandezvicente.daniel.control.PublicationController">
    <children>
-      <ImageView fx:id="iPublicationImage" fitHeight="157.0" fitWidth="113.0" layoutX="31.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="iPublicationImage" fitHeight="157.0" fitWidth="113.0" layoutX="25.0" layoutY="36.0" onMouseClicked="#changePhoto" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/upImage.jpg" />
          </image>

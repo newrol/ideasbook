@@ -45,6 +45,5 @@ public class UserInfoController implements Initializable {
     public User getOwner() {return Owner;}
     public void setOwner(User Owner) {this.Owner = Owner;}
     public User getFriend() {return friend;}
-    public void setFriend(User friend) {this.friend = friend;}
- 
+    public void setFriend(User friend) {this.friend = friend;} 
 }

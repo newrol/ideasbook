@@ -6,8 +6,8 @@
 package edu.hernandezvicente.daniel.control;
 
 import com.iesdealquerias.dam.ideasbook.User;
-import edu.hernandezvicente.daniel.persistance.dao.UserJPADAO;
 import edu.hernandezvicente.daniel.persistance.model.UserCatalog;
+import edu.hernandezvicente.daniel.tools.ImageTools;
 import java.io.IOException;
 
 import java.net.URL;
@@ -24,6 +24,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 
 /**
  * FXML Controller class
@@ -89,14 +90,16 @@ public class LoginController implements Initializable {
     /**
      * Method to registrate a new user.
      */
-    public void registerUser(){
-        System.out.println("registrando");
+    public void registerUser() throws IOException{
+        Image defaultImage = new Image(HomeController.class.getResourceAsStream(
+                                    "/edu/hernandezvicente/daniel/images/ProfileImageTest.jpg"));
+        
         User user = new User();
         user.setName(tName.getText());
         user.setPassword(tPassword.getText());
         user.setEmail(tMail.getText());
         user.setAge(LocalDateTime.now().getYear() - (int) cYear.getValue());
-        user.setPhoto(new byte[12]);
+        user.setPhoto(new ImageTools().wrapImage(defaultImage));
         user.setSince(new Date());
         userCatalog.CreateUser(user);
     }

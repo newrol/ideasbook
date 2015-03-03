@@ -7,6 +7,7 @@ package edu.hernandezvicente.daniel.control;
 
 import com.iesdealquerias.dam.ideasbook.User;
 import edu.hernandezvicente.daniel.persistance.model.UserCatalog;
+import edu.hernandezvicente.daniel.tools.ImageTools;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,6 +26,7 @@ public class UserAdminPaneController implements Initializable {
     private User user;
     private UserCatalog userCatalog;
     private HomeController homeController;
+    ImageTools imageTools;
     
     @FXML
     private TextField tName;
@@ -44,20 +46,21 @@ public class UserAdminPaneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         userCatalog = new UserCatalog();
+        imageTools = new ImageTools();
     }    
 
     public void changeValues() throws IOException{
         user.setEmail(tMail.getText());
         user.setPassword(tPassword.getText());
-        //user.setPhoto();
+        user.setPhoto(imageTools.wrapImage(vPhoto.getImage()));
         userCatalog.modifyUser(user);
         homeController.refresh();
     }
     
-    public void FillValues(){
+    public void FillValues() throws IOException{
         tName.setText(user.getName());
         tMail.setText(user.getEmail());
-        //vPhoto.setImage(user.getPhoto());
+        //vPhoto.setImage(imageTools.showImage(user.getPhoto()));
         
     }
     
@@ -76,5 +79,9 @@ public class UserAdminPaneController implements Initializable {
 
     public void setHomeController(HomeController homeController) {
         this.homeController = homeController;
+    }
+    
+    public void changePhoto() throws IOException{
+        vPhoto.setImage(imageTools.LoadImage());
     }
 }

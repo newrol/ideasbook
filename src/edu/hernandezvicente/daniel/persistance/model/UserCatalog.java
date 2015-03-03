@@ -16,7 +16,7 @@ import java.util.List;
  * @author Daniel 
  */
 public class UserCatalog {
-     UserJPADAO userDao;
+    private UserJPADAO userDao;
     
     public UserCatalog(){
         userDao = new UserJPADAO();
@@ -39,6 +39,7 @@ public class UserCatalog {
     public User validateUser(User user){
        return userDao.validateUser(user);
     }
+    
     /**
      * Find user friends into database.
      * @param user

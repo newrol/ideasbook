@@ -26,6 +26,7 @@ public class UserAdminPaneController implements Initializable {
     private User user;
     private UserCatalog userCatalog;
     private HomeController homeController;
+    
     ImageTools imageTools;
     
     @FXML
@@ -60,8 +61,7 @@ public class UserAdminPaneController implements Initializable {
     public void FillValues() throws IOException{
         tName.setText(user.getName());
         tMail.setText(user.getEmail());
-        //vPhoto.setImage(imageTools.showImage(user.getPhoto()));
-        
+        vPhoto.setImage(imageTools.showImage(user.getPhoto()));        
     }
     
     public User getUser() {

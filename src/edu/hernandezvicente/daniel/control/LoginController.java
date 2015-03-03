@@ -14,6 +14,7 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -22,19 +23,35 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Control;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import org.controlsfx.validation.Severity;
+import org.controlsfx.validation.ValidationMessage;
+import org.controlsfx.validation.ValidationResult;
+import org.controlsfx.validation.ValidationSupport;
+import org.controlsfx.validation.Validator;
 
 /**
  * FXML Controller class
- *
+ *Control Login FXML 
  * @author Daniel
  */
 public class LoginController implements Initializable {
     private MainController mainController;
     // peristance user object declaration:
     private UserCatalog userCatalog;
+    // Class to manage validation:
+    private  ValidationSupport validationSupport  =  new ValidationSupport();
+    // test if the component is empty;
+    private final Validator v1 = Validator.createEmptyValidator("");
+    // Labe diccionary - control. join a mistake label: 
+    // a specific control:
+    private HashMap<Control, Label> map = new HashMap();
+    
     
     //fxml switch object declaration between registration file and this controller.
     @FXML
@@ -61,11 +78,13 @@ public class LoginController implements Initializable {
     private ComboBox cYear;             //born year combo box.
     
     @FXML 
-    private Button bResgister;          //register button.
+    private Button bRegister;          //register button.
     
     @FXML
     private Button bJoin;               //go to application button.
     
+    @FXML
+    private Label mistakelbl;
     
     /**
      * Initializes the controller class.
@@ -75,6 +94,10 @@ public class LoginController implements Initializable {
         userCatalog = new UserCatalog(); // 
         fillAgeCombos();            //Fill up all comboBox
         
+        createValidation(tName, mistakelbl, v1);
+        createValidation(tMail, mistakelbl, v1);
+        createValidation(tMail2, mistakelbl, v1);
+        createValidation(tPassword, mistakelbl, v1);
     }
     
     
@@ -87,6 +110,15 @@ public class LoginController implements Initializable {
     }
     
 
+    public void setValidationValues(){
+        
+        //Añade validators a los textfield:
+        createValidation(tName, mistakelbl, v1);
+        createValidation(tMail, mistakelbl, v1);
+        createValidation(tMail2, mistakelbl, v1);
+        createValidation(tPassword, mistakelbl, v1);
+    }
+    
     /**
      * Method to registrate a new user.
      */
@@ -162,6 +194,82 @@ public class LoginController implements Initializable {
         else
             bJoin.setDisable(false);
     }
-}
+
+    /**
+     * Añade el validador al textfield. Este método es el que lleva el código
+     * para añadir el validador de controlsfx y escuchar a los cambios de 
+     * de validación. Si sólo hay un campo que validad, bastaría con realizar
+     * toda la gestión en el listener. Sin embargo, si hay varios campos que 
+     * validar y queremos tener etiquitas con errores por cada campo, hay que
+     * complicar un poco el programa. Esa complicación se resuelve en el método
+     * displayErrors
+     * 
+     * @see #displayErrors
+     * 
+     * @param textField Textfield a validar
+     * @param lbl Etiqueta que muestra el error (de haberlo)
+     */
+    private void createValidation(TextField tName, Label mistakelbl, Validator v1) {
+        // Añade el validador al textfield
+        validationSupport.registerValidator(tName, v1);   
+        // Cuando cambia el resultado de la validación, se llama al método errors
+        validationSupport.validationResultProperty().addListener( 
+            (o, oldValue, validationResult) -> displayErrors(validationResult)
+        );
+        // Asocia el control a la etiqueta de error
+        map.put(tName, mistakelbl);
+    }
+
+    
+    /**
+     * Este método recorre la lista de errores para actualizar las etiquetas de
+     * error. Al inicio habilita o deshabilita el botón, dependiendo de si hay
+     * errores.
+     * @param validationResult Lista con los errores de validación
+     */
+    private void displayErrors(ValidationResult validationResult) {
+        // Borra todas las etiquetas de error
+        map.entrySet().stream().forEach((lbl)-> lbl.getValue().setText(""));
+        // Habilita o deshabilita el botón si no hay o hay errores respectivamente
+        bRegister.setDisable(!validationResult.getErrors().isEmpty());
+        // Muestra los errores de cada control en su etiqueta correspondiente
+        validationResult.getErrors().stream().forEach((err) -> setErrorLabel(err));
+        // Muestra los warnings de cada control en su etiqueta correspondiente
+        validationResult.getWarnings().stream().forEach((err) -> setErrorLabel(err));
+    }
+
+        
+    /**
+     * Este método identifica qué control generó el error de validación y 
+     * muestra el mensaje correspondiente en su etiqueta de error
+     * @param err Mensaje de error de validación
+     */
+    private void setErrorLabel(ValidationMessage err) {
+        // Obtiene la etiqueta correspondiente al error
+        Label errLbl = getErrorLabelFor(err.getTarget());
+        // Establece el color del mensaje de error
+        errLbl.setTextFill(getColor(err.getSeverity()));
+        // Establece el mensaje de error
+        errLbl.setText(err.getText());
+    }
+
+        /**
+     * Este método devuelve la etiqueta de error asociada al control
+     * @param source Control que genera el error
+     * @return Etiqueta de error asociada al control
+     */
+    private Label getErrorLabelFor(Control target) {
+            return map.get(target);
+    }
+    
+    /**
+     * Devuelve el color del mensaje (rojo / amarillo) depenediendo de la severidad
+     * @param s Severidad del mensaje
+     * @return color del mensaje (rojo / amarillo) depenediendo de la severidad
+     */
+    private Color getColor(Severity s) {
+        return ( s == Severity.WARNING ) ? Color.DARKGOLDENROD : Color.RED;
+    }
+}   
 
   

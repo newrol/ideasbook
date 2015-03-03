@@ -7,6 +7,7 @@ package edu.hernandezvicente.daniel.control;
 
 import com.iesdealquerias.dam.ideasbook.User;
 import edu.hernandezvicente.daniel.persistance.model.UserCatalog;
+import edu.hernandezvicente.daniel.tools.ImageTools;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -136,29 +137,18 @@ public class HomeController implements Initializable {
     }
     
     public void refresh() throws IOException{
-        refreshuserImage();
         refreshUserData();
         wall();
         userCatalog.getFriends(user);
     }
     
-    public void refreshuserImage(){
-       byte []userPhoto = user.getPhoto();        
-       
-       if(userPhoto.length < 15)
-            userImage.setImage(new Image(HomeController.class.getResourceAsStream(
-                                    "/edu/hernandezvicente/daniel/images/ProfileImageTest.jpg")));
-       else{
-           userImage.setImage(new Image(new ByteArrayInputStream(userPhoto)));
-       }              
-    }
-    
     /**
      * Refresh user values
      */
-    public void refreshUserData(){
+    public void refreshUserData() throws IOException{
         String userName = user.getName();
         lUserName.setText(userName);
+        userImage.setImage(new ImageTools().showImage(user.getPhoto()));
     }
     
     

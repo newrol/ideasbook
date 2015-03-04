@@ -19,4 +19,5 @@ public interface IFriendshipDAO {
     public List<Friendship> findUserFriendship(User user1, User user2);
     public boolean startFriendship(User host, User friend);
     public void deleteFriendShip(User host, User Friend);
+    public List<Friendship> findFriendshipRequests(User user);
 }

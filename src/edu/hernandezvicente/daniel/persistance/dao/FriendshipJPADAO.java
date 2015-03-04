@@ -94,4 +94,33 @@ public class FriendshipJPADAO extends JPADAO<Friendship, Long> implements IFrien
         friendship.setUser1(Friend);
         super.delete(friendship);
     }
+
+    @Override
+    public List<Friendship> findFriendshipRequests(User user) {
+        User selectedUser;
+        int counter;
+        List<Friendship> frienships;
+        List<Friendship> friendRequests = new ArrayList<>();
+        String query = "SELECT f FROM Friendship f WHERE f.user1 = ?1 OR f.user2 = ?1";
+        TypedQuery<Friendship> exeQuery = super.entityManager.createQuery(query, Friendship.class);
+        exeQuery.setParameter(1, user);       //Query parameter 1        
+        frienships = exeQuery.getResultList();
+        
+        for(Friendship friendship: frienships){
+            selectedUser = friendship.getUser1();
+            counter = 0;
+            
+            for(Friendship pFriendship: frienships){
+                if(selectedUser.equals(pFriendship.getUser2())){
+                    break;
+                }
+                else{
+                    counter++;                
+                }
+            }
+            if(counter == frienships.size());
+                friendRequests.add(friendship);
+        }
+        return friendRequests;
+    }
 }

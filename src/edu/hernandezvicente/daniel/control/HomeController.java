@@ -58,6 +58,7 @@ public class HomeController implements Initializable {
     }    
 
     public void wall() throws IOException{
+        System.out.println(friendShipCatalog.findFriendshipRequests(user).get(0).getUser1().getName());
         GridPane pane = new GridPane();
         sc.setContent(pane);
         

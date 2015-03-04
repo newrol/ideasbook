@@ -43,4 +43,8 @@ public class FriendShipCatalog {
     public void deleteFriend(User host, User friend){
        friendshipDAO.deleteFriendShip(host, friend);
     }
+    
+    public List<Friendship> findFriendshipRequests(User user){
+        return friendshipDAO.findFriendshipRequests(user);
+    }
 }

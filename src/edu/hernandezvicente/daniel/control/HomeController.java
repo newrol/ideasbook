@@ -6,6 +6,7 @@
 package edu.hernandezvicente.daniel.control;
 
 import com.iesdealquerias.dam.ideasbook.User;
+import edu.hernandezvicente.daniel.persistance.model.FriendShipCatalog;
 import edu.hernandezvicente.daniel.persistance.model.UserCatalog;
 import edu.hernandezvicente.daniel.tools.ImageTools;
 import java.io.ByteArrayInputStream;
@@ -32,6 +33,7 @@ import javafx.scene.layout.GridPane;
  */
 public class HomeController implements Initializable {
     private UserCatalog userCatalog;
+    private FriendShipCatalog friendShipCatalog;
     private User user;
     private MainController mainController;
     
@@ -52,6 +54,7 @@ public class HomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        userCatalog = new UserCatalog();
+       friendShipCatalog = new FriendShipCatalog();
     }    
 
     public void wall() throws IOException{
@@ -98,22 +101,19 @@ public class HomeController implements Initializable {
      * @param user
      * @throws IOException 
      */
-    private void friendWall(User user) throws IOException{
+    private void friendWall(User friend) throws IOException{
         GridPane pane = new GridPane();
-        sc.setContent(pane);        
-        List<FXMLLoader> publicationsviewLoader = new ArrayList<>();
-        List<Parent> publicationsView = new ArrayList<>();
-        List<PublicationViewController> publicationsViewController = new ArrayList<>();
-        
-        for(int i = 0; i < user.getPublicationList().size(); i++){
-            
-            publicationsviewLoader.add(new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/PublicationView.fxml")));
-            publicationsView.add((Parent)publicationsviewLoader.get(i).load());
-            publicationsViewController.add(publicationsviewLoader.get(i).<PublicationViewController>getController());
-            publicationsViewController.get(i).setPublication(user.getPublicationList().get(i));
-            publicationsViewController.get(i).fillPublication();
-            pane.addRow(i+1, publicationsView.get(i));
-        }
+        sc.setContent(pane);                      
+        FXMLLoader publicationLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/UserInfo.fxml"));
+        Parent UserInfo;
+        UserInfoController userInfoController;
+        UserInfo = (Parent)publicationLoader.load();
+        userInfoController = publicationLoader.<UserInfoController>getController();        
+        userInfoController.setOwner(user);
+        userInfoController.setFriend(friend);
+        userInfoController.setGp(pane);
+        userInfoController.fill();
+        pane.add(UserInfo, 0, 0);
     }
     
     public User getUser() {
@@ -139,7 +139,7 @@ public class HomeController implements Initializable {
     public void refresh() throws IOException{
         refreshUserData();
         wall();
-        userCatalog.getFriends(user);
+        friendShipCatalog.getFriends(user);
     }
     
     /**
@@ -160,8 +160,8 @@ public class HomeController implements Initializable {
    public void searchFriend() throws IOException{
        User friend;
        try{
-            user = userCatalog.searchUserByName(tSearchUser.getText());
-            mainController.showUserWall(user);
+            friend = userCatalog.searchUserByName(tSearchUser.getText());
+            friendWall(friend);
         }
         catch(javax.persistence.NoResultException e){
             GridPane pane = new GridPane();
@@ -182,5 +182,5 @@ public class HomeController implements Initializable {
         userAdminPaneController.setHomeController(this);
         userAdminPaneController.FillValues();
         pane.add(userAdminPane, 0, 0);
-   }
+    }
 }

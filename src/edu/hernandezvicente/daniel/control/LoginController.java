@@ -143,6 +143,7 @@ public class LoginController implements Initializable {
         user.setPassword(tLogginPassword.getText());
         
         
+        
         try{
             user = userCatalog.validateUser(user);
             mainController.showUserWall(user);
@@ -203,11 +204,10 @@ public class LoginController implements Initializable {
      * validar y queremos tener etiquitas con errores por cada campo, hay que
      * complicar un poco el programa. Esa complicación se resuelve en el método
      * displayErrors
-     * 
      * @see #displayErrors
-     * 
      * @param textField Textfield a validar
      * @param lbl Etiqueta que muestra el error (de haberlo)
+     * @autor juavi
      */
     private void createValidation(TextField tName, Label mistakelbl, Validator v1) {
         // Añade el validador al textfield
@@ -226,6 +226,7 @@ public class LoginController implements Initializable {
      * error. Al inicio habilita o deshabilita el botón, dependiendo de si hay
      * errores.
      * @param validationResult Lista con los errores de validación
+     * @autor juavi
      */
     private void displayErrors(ValidationResult validationResult) {
         // Borra todas las etiquetas de error
@@ -243,6 +244,7 @@ public class LoginController implements Initializable {
      * Este método identifica qué control generó el error de validación y 
      * muestra el mensaje correspondiente en su etiqueta de error
      * @param err Mensaje de error de validación
+     * @autor juavi
      */
     private void setErrorLabel(ValidationMessage err) {
         // Obtiene la etiqueta correspondiente al error
@@ -257,6 +259,7 @@ public class LoginController implements Initializable {
      * Este método devuelve la etiqueta de error asociada al control
      * @param source Control que genera el error
      * @return Etiqueta de error asociada al control
+     * @autor juavi
      */
     private Label getErrorLabelFor(Control target) {
             return map.get(target);
@@ -266,6 +269,7 @@ public class LoginController implements Initializable {
      * Devuelve el color del mensaje (rojo / amarillo) depenediendo de la severidad
      * @param s Severidad del mensaje
      * @return color del mensaje (rojo / amarillo) depenediendo de la severidad
+     * @autor juavi
      */
     private Color getColor(Severity s) {
         return ( s == Severity.WARNING ) ? Color.DARKGOLDENROD : Color.RED;

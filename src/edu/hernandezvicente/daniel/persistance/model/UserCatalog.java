@@ -8,7 +8,7 @@ package edu.hernandezvicente.daniel.persistance.model;
 
 import com.iesdealquerias.dam.ideasbook.Friendship;
 import com.iesdealquerias.dam.ideasbook.User;
-import edu.hernandezvicente.daniel.persistance.dao.UserJPADAO;
+import edu.hernandezvicente.daniel.persistance.dao.FriendJPADAO;
 import java.util.List;
 
 /**
@@ -16,10 +16,10 @@ import java.util.List;
  * @author Daniel 
  */
 public class UserCatalog {
-    private UserJPADAO userDao;
+    private FriendJPADAO userDao;
     
     public UserCatalog(){
-        userDao = new UserJPADAO();
+        userDao = new FriendJPADAO();
     }
     
     /**
@@ -41,15 +41,6 @@ public class UserCatalog {
     }
     
     /**
-     * Find user friends into database.
-     * @param user
-     * @return A list of friends 
-     */
-    public List<User> getFriends(User user){
-        return userDao.finduserFriends(user);
-    }
-    
-    /**
      * Find users in database since their name.
      * @param username
      * @return User if the user is sent
@@ -65,10 +56,5 @@ public class UserCatalog {
      */
     public void modifyUser(User user){
         userDao.update(user);
-    }    
-    
-    public Friendship getusersFriendShip(User user1, User user2){
-        return userDao.findUserFriendship(user1, user2);
-    }
-            
+    }       
 }

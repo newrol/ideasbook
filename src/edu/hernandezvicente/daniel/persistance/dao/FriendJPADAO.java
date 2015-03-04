@@ -13,7 +13,7 @@ import javax.persistence.TypedQuery;
  * 
  * @author Daniel 
  */
-public class UserJPADAO extends JPADAO<User, Long> implements IUserDAO {
+public class FriendJPADAO extends JPADAO<User, Long> implements IUserDAO {
     
     @Override
     public List<User> findAll() {
@@ -44,41 +44,6 @@ public class UserJPADAO extends JPADAO<User, Long> implements IUserDAO {
         exeQuery.setParameter(1, user.getName());       //Query parameter 1
         exeQuery.setParameter(2, user.getPassword());   //Query parameter 2
         
-        return exeQuery.getSingleResult();
-    }
-    
-    /**
-     *Method to find all user friends. 
-     * @param user
-     * @return List friends
-     */
-    @Override
-    public List<User> finduserFriends(User user) {
-        //Query to find a user with selected values:
-        String query = "SELECT f FROM Friendship f WHERE f.user1 = ?1  OR f.user2 = ?1";
-        
-        //Query created since father entityManager
-        TypedQuery<Friendship> exeQuery = super.entityManager.createQuery(query, Friendship.class);
-        exeQuery.setParameter(1, user);       //Query parameter 1
-        
-        List<Friendship> friendsipList = exeQuery.getResultList();
-        List<User> friendsList = new ArrayList<User>();
-        
-        for(Friendship friendship :friendsipList)
-            if(friendship.getUser1().getId() == user.getId())
-                friendsList.add(friendship.getUser1());
-            else
-                friendsList.add(friendship.getUser2());
-        
-        return friendsList;
-    }
-
-    @Override
-    public Friendship findUserFriendship(User user1, User user2) {
-        String query = "SELECT f FROM Friendship f WHERE f.user1 = ?1  AND f.user2 = ?2";
-        TypedQuery<Friendship> exeQuery = super.entityManager.createQuery(query, Friendship.class);
-        exeQuery.setParameter(1, user1);       //Query parameter 1
-        exeQuery.setParameter(2, user2);        
         return exeQuery.getSingleResult();
     }
 }

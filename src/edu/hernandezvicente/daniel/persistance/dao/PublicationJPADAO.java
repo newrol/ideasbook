@@ -25,8 +25,8 @@ public class PublicationJPADAO extends JPADAO<Publication, Long> implements IPub
 
     @Override
     public List<Publication> getLastPublications(User user) {
-        UserJPADAO userJPADAO = new UserJPADAO();
-        List<User> users = userJPADAO.finduserFriends(user);
+        FriendshipJPADAO friendshipJPADAO = new FriendshipJPADAO();
+        List<User> users = friendshipJPADAO.finduserFriends(user);
         List<Publication> lastPublications = new ArrayList<Publication>();
         
         for(User selectedUser : users){

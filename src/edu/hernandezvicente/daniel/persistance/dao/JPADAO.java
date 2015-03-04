@@ -49,7 +49,9 @@ public class JPADAO<T,K> implements IDAO<T, K> {
 
     @Override
     public void delete(T t) {
+        entityManager.getTransaction().begin();
         entityManager.remove(t);
+        entityManager.getTransaction().commit();
     }
 
     @Override

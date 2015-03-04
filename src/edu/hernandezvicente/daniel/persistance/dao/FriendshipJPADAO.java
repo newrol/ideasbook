@@ -67,28 +67,28 @@ public class FriendshipJPADAO extends JPADAO<Friendship, Long> implements IFrien
     @Override
     public boolean startFriendship(User host, User friend) {
         
-//        Long lastId;
-//        Friendship friendship = new Friendship();
-//        friendship.setUser1(host);
-//        friendship.setUser2(friend);
-//        lastId = entityManager.createQuery("select max(f.id) from Friendship f", Long.class).getSingleResult();
-//        friendship.setId(Long.parseLong(lastId.toString()) + 1);
-//        friendship.setType1("friend");
-//        friendship.setType2("friend");
-//        String query = "SELECT f FROM Friendship f WHERE f.user1 = ?1 AND f.user2 = ?2";
-//        TypedQuery<Friendship> exeQuery = super.entityManager.createQuery(query, Friendship.class);
-//        exeQuery.setParameter(1, host);       //Query parameter 1
-//        exeQuery.setParameter(2, friend);       //Query parameter 2
-//        
-//        try{
-//            exeQuery.getSingleResult();
-//            super.create(friendship);
-//            return false;
-//            
-//        }catch(javax.persistence.NoResultException e){
-//            super.create(friendship);
-//            return true;
-//        }
+        Long lastId;
+        Friendship friendship = new Friendship();
+        friendship.setUser1(host);
+        friendship.setUser2(friend);
+        lastId = entityManager.createQuery("select max(f.id) from Friendship f", Long.class).getSingleResult();
+        friendship.setId(Long.parseLong(lastId.toString()) + 1);
+        friendship.setType1("friend");
+        friendship.setType2("friend");
+        String query = "SELECT f FROM Friendship f WHERE f.user1 = ?1 AND f.user2 = ?2";
+        TypedQuery<Friendship> exeQuery = super.entityManager.createQuery(query, Friendship.class);
+        exeQuery.setParameter(1, host);       //Query parameter 1
+        exeQuery.setParameter(2, friend);       //Query parameter 2
+        
+        try{
+            exeQuery.getSingleResult();
+            super.create(friendship);
+            return false;
+            
+        }catch(javax.persistence.NoResultException e){
+            super.create(friendship);
+            return true;
+        }
     }
     
     public void deleteFriendShip(User host, User Friend){

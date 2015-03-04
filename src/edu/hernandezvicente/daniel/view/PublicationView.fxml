@@ -15,7 +15,7 @@
    <children>
       <ImageView fx:id="iImage" fitHeight="107.0" fitWidth="135.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="tText" layoutX="167.0" layoutY="19.0" prefHeight="93.0" prefWidth="580.0" text="Label" />
-      <ScrollPane layoutX="82.0" layoutY="132.0" prefHeight="171.0" prefWidth="662.0">
+      <ScrollPane fx:id="sp" layoutX="82.0" layoutY="132.0" prefHeight="171.0" prefWidth="662.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
         </content>

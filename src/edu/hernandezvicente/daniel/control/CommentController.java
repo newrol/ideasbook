@@ -51,7 +51,6 @@ public class CommentController implements Initializable {
         iUserImage.setImage(new ImageTools().showImage(user.getPhoto()));
         lUsername.setText(user.getName());
     }
-
     
     public void addComment(){
         Publication comment = new Text();
@@ -68,7 +67,6 @@ public class CommentController implements Initializable {
     public void setPublication(Publication Publication) {
         this.Publication = Publication;
     }
-
     
     public User getUser() {
         return user;

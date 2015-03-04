@@ -58,17 +58,32 @@ public class PublicationViewController implements Initializable {
         this.publication = publication;
     }
     
-    public void fillPublication() throws IOException{
+    public void fillPublication(Publication publication) throws IOException{
         GridPane pane = new GridPane();
-        FXMLLoader commentLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/comment.fxml"));
+        int counter = 0;
+        
+        for(int i = 0; i < publication.getPublicationList().size(); i++){
+            FXMLLoader commentLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/CommentView.fxml"));
+            Parent coment;
+            CommentViewController commentViewController;
+            coment = (Parent)commentLoader.load();
+            commentViewController = commentLoader.<CommentViewController>getController();        
+            sp.setContent(pane);
+            pane.add(coment, i, 0);
+            counter ++;
+        }
+        
+        FXMLLoader commentLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/Comment.fxml"));
         Parent coment;
         CommentController commentController;
         coment = (Parent)commentLoader.load();
         commentController = commentLoader.<CommentController>getController();        
         sp.setContent(pane);
-        pane.add(coment, 0, 0);
+        pane.add(coment, counter, 0);
         iImage.setImage(imagetools.showImage(((Text) publication).getPhoto()));
         tText.setText(((Text) publication).getText());
+        
+        
     }
     
     

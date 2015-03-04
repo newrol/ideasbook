@@ -8,7 +8,7 @@ package edu.hernandezvicente.daniel.persistance.model;
 
 import com.iesdealquerias.dam.ideasbook.Friendship;
 import com.iesdealquerias.dam.ideasbook.User;
-import edu.hernandezvicente.daniel.persistance.dao.FriendJPADAO;
+import edu.hernandezvicente.daniel.persistance.dao.UserJPADAO;
 import java.util.List;
 
 /**
@@ -16,10 +16,10 @@ import java.util.List;
  * @author Daniel 
  */
 public class UserCatalog {
-    private FriendJPADAO userDao;
+    private UserJPADAO userDao;
     
     public UserCatalog(){
-        userDao = new FriendJPADAO();
+        userDao = new UserJPADAO();
     }
     
     /**
@@ -57,4 +57,12 @@ public class UserCatalog {
     public void modifyUser(User user){
         userDao.update(user);
     }       
+    
+    public void AddFriend(User owner, User friend){
+        userDao.adFriend(owner, friend);
+    }
+    
+    public void update(User user){
+        userDao.update(user);
+    }
 }

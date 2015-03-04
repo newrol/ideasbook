@@ -3,6 +3,7 @@
 package edu.hernandezvicente.daniel.persistance.dao;
 
 import com.iesdealquerias.dam.ideasbook.Friendship;
+import com.iesdealquerias.dam.ideasbook.Request;
 import com.iesdealquerias.dam.ideasbook.User;
 import edu.hernandezvicente.daniel.persistance.daointerfaces.IUserDAO;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import javax.persistence.TypedQuery;
  * 
  * @author Daniel 
  */
-public class FriendJPADAO extends JPADAO<User, Long> implements IUserDAO {
+public class UserJPADAO extends JPADAO<User, Long> implements IUserDAO {
     
     @Override
     public List<User> findAll() {
@@ -45,6 +46,22 @@ public class FriendJPADAO extends JPADAO<User, Long> implements IUserDAO {
         exeQuery.setParameter(2, user.getPassword());   //Query parameter 2
         
         return exeQuery.getSingleResult();
+    }
+
+    @Override
+    public void adFriend(User user, User friend) {
+        RequestJPADAO requestJPADAO = new RequestJPADAO();
+        Request r = new Request();
+        r.setUser1(user);
+        r.setUser2(friend);
+        friend.getRequestList().add(r);
+        requestJPADAO.persist(r);
+        super.update(friend);
+    }
+
+    @Override
+    public void ConfirmRequest(Request request) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="59.0" prefWidth="660.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="edu.hernandezvicente.daniel.control.CommentViewController">
+   <children>
+      <ImageView fx:id="iUserPhoto" fitHeight="46.0" fitWidth="46.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="lName" layoutX="60.0" layoutY="6.0" text="Label" />
+      <Label fx:id="lText" layoutX="74.0" layoutY="22.0" prefHeight="31.0" prefWidth="580.0" text="Label" />
+   </children>
+</AnchorPane>

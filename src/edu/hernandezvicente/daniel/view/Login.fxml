@@ -77,7 +77,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </PasswordField>
-            <Label fx:id="mistakelbl" layoutX="264.0" layoutY="336.0" prefHeight="17.0" prefWidth="221.0" text="Label" />
+            <Label fx:id="mistakelbl" layoutX="264.0" layoutY="336.0" prefHeight="17.0" prefWidth="221.0" />
          </children>
       </Pane>
    </center>

@@ -32,6 +32,7 @@ import javafx.scene.layout.GridPane;
 public class UserInfoController implements Initializable {
     private User Owner, friend;
     private List<Friendship> friendships;
+    private UserCatalog userCatalog;
     private FriendShipCatalog friendShipCatalog;
     private boolean isfriend;
     private GridPane gp;
@@ -55,6 +56,7 @@ public class UserInfoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        userCatalog = new UserCatalog();
         friendShipCatalog = new FriendShipCatalog();
     }    
 
@@ -83,7 +85,7 @@ public class UserInfoController implements Initializable {
             publicationsView.add((Parent)publicationsviewLoader.get(i).load());
             publicationsViewController.add(publicationsviewLoader.get(i).<PublicationViewController>getController());
             publicationsViewController.get(i).setPublication(friend.getPublicationList().get(i));
-            publicationsViewController.get(i).fillPublication();
+            publicationsViewController.get(i).fillPublication(friend.getPublicationList().get(i));
             gp.addRow(i+1, publicationsView.get(i));
         }
     }
@@ -106,7 +108,7 @@ public class UserInfoController implements Initializable {
     public void friendshipButtonAction(){
         System.out.println("dentro");
         if(!isfriend)
-            friendShipCatalog.addFriend(Owner, friend);
+            userCatalog.AddFriend(Owner, friend);
         else{
             friendShipCatalog.deleteFriend(Owner, friend);
         }

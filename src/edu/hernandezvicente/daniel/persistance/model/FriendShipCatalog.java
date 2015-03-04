@@ -8,7 +8,7 @@ package edu.hernandezvicente.daniel.persistance.model;
 
 import com.iesdealquerias.dam.ideasbook.Friendship;
 import com.iesdealquerias.dam.ideasbook.User;
-import edu.hernandezvicente.daniel.persistance.dao.FriendJPADAO;
+import edu.hernandezvicente.daniel.persistance.dao.UserJPADAO;
 import edu.hernandezvicente.daniel.persistance.dao.FriendshipJPADAO;
 import java.util.List;
 

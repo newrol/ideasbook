@@ -9,6 +9,7 @@ package edu.hernandezvicente.daniel.control;
 import com.iesdealquerias.dam.ideasbook.Text;
 import com.iesdealquerias.dam.ideasbook.User;
 import edu.hernandezvicente.daniel.persistance.model.PublicationCatalog;
+import edu.hernandezvicente.daniel.persistance.model.UserCatalog;
 import edu.hernandezvicente.daniel.tools.ImageTools;
 import java.io.IOException;
 import java.net.URL;
@@ -51,6 +52,8 @@ public class PublicationController implements Initializable {
         publication.setText(tPublicationText.getText());
         publication.setPhoto(imageTools.wrapImage(iPublicationImage.getImage()));        
         publicationCatalog.addPublication(publication);
+        user.getPublicationList().add(publication);
+        new UserCatalog().update(user);
         HomeController.refresh();        
     }    
     

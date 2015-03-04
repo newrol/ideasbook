@@ -59,7 +59,7 @@ public class HomeController implements Initializable {
     }    
 
     public void wall() throws IOException{
-        System.out.println(friendShipCatalog.findFriendshipRequests(user).get(0).getUser1().getName());
+        System.out.println(user.getRequestList().size());
         GridPane pane = new GridPane();
         sc.setContent(pane);
         
@@ -93,7 +93,7 @@ public class HomeController implements Initializable {
             publicationsView.add((Parent)publicationsviewLoader.get(i).load());
             publicationsViewController.add(publicationsviewLoader.get(i).<PublicationViewController>getController());
             publicationsViewController.get(i).setPublication(user.getPublicationList().get(i));
-            publicationsViewController.get(i).fillPublication();
+            publicationsViewController.get(i).fillPublication(user.getPublicationList().get(i));
             pane.addRow(i+1, publicationsView.get(i));
         }        
     }   

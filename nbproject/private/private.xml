@@ -4,23 +4,33 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/control/LoginController.java</file>
-            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/test/edu/hernandezvicente/daniel/view/LoginButtonTest.java</file>
-            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/view/Home.fxml</file>
-            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/view/UserAdminPane.fxml</file>
+            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/persistance/daointerfaces/IFriendshipDAO.java</file>
             <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/persistance/daointerfaces/IUserDAO.java</file>
             <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/persistance/dao/UserJPADAO.java</file>
-            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/control/HomeController.java</file>
-            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/control/PublicationController.java</file>
+            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/persistance/dao/RequestJPADAO.java</file>
+            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/persistance/daointerfaces/IDAO.java</file>
+            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/persistance/model/PublicationCatalog.java</file>
             <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/view/UserInfo.fxml</file>
-            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/control/UserAdminPaneController.java</file>
             <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/reports/JasperTestLoader.java</file>
-            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/control/PublicationViewController.java</file>
-            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/tools/ImageTools.java</file>
-            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/persistance/dao/JPADAO.java</file>
             <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/control/UserInfoController.java</file>
             <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/control/MainController.java</file>
             <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/persistance/model/UserCatalog.java</file>
+            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/persistance/dao/FriendshipJPADAO.java</file>
             <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/reports/JasperTestFX.java</file>
+            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/control/CommentController.java</file>
+            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/persistance/daointerfaces/IPublicationDAO.java</file>
+            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/persistance/dao/PublicationJPADAO.java</file>
+            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/persistance/daointerfaces/IRequestDAO.java</file>
+            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/control/HomeController.java</file>
+            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/control/PublicationController.java</file>
+            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/control/UserAdminPaneController.java</file>
+            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/tools/ImageTools.java</file>
+            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/control/PublicationViewController.java</file>
+            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/view/CommentView.fxml</file>
+            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/control/CommentViewController.java</file>
+            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/persistance/dao/JPADAO.java</file>
+            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/persistance/model/FriendShipCatalog.java</file>
+            <file>file:/G:/Programming/NetBeansProjects/IdeasBook/ideasbook/src/edu/hernandezvicente/daniel/persistance/ideasbook.sql</file>
         </group>
     </open-files>
 </project-private>

@@ -18,6 +18,6 @@ import java.util.List;
 public interface IUserDAO extends IDAO<User, Long> {
     public User validateUser(User user);
     public User findByNameLike(String name);
-    public void adFriend(User user);
+    public void adFriend(User user, User friend);
     public void ConfirmRequest(Request request);
 }

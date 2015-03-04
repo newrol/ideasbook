@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package edu.hernandezvicente.daniel.persistance.daointerfaces;
 
-import com.iesdealquerias.dam.ideasbook.Publication;
+import com.iesdealquerias.dam.ideasbook.Friendship;
 import com.iesdealquerias.dam.ideasbook.User;
 import java.util.List;
 
 /**
- *
- * @author Daniel
+ * 
+ * @author Daniel 
  */
-public interface IPublicationDAO {
-    public List<Publication> getUserPublications(User user);
-    public List<Publication> getLastPublications(User user);
-    public void addCommentToPublication(Publication publication, Publication Comment);
+public interface IFriendshipJPADAO {
+    public boolean startFriendship(User host, User friend);
+    public List<Friendship> findFriendshipRequests(User user);    
 }

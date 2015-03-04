@@ -28,6 +28,11 @@ public class PublicationCatalog {
     
     public List<Publication> getLastPublications(User user){
         
-        return null;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    }
+    
+    public void addCommentToPublication(Publication publication, Publication Comment){
+        publicationDAO.addCommentToPublication(publication, Comment);
     }
 }

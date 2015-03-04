@@ -35,4 +35,10 @@ public class PublicationJPADAO extends JPADAO<Publication, Long> implements IPub
                
         return lastPublications;
     }
+
+    @Override
+    public void addCommentToPublication(Publication publication, Publication Comment) {
+        publication.getPublicationList().add(Comment);
+        super.update(publication);
+    }
 }

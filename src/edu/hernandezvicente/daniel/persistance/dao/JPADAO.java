@@ -44,7 +44,9 @@ public class JPADAO<T,K> implements IDAO<T, K> {
 
     @Override
     public void update(T t) {
+        entityManager.getTransaction().begin();
         entityManager.merge(t);
+        entityManager.getTransaction().commit();
     }
 
     @Override

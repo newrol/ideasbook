@@ -31,6 +31,7 @@ import javafx.scene.layout.GridPane;
 public class PublicationViewController implements Initializable {
     private Publication publication;
     private ImageTools imagetools;
+    private HomeController homeController;
     
     @FXML
     private Label tText;
@@ -67,9 +68,10 @@ public class PublicationViewController implements Initializable {
             Parent coment;
             CommentViewController commentViewController;
             coment = (Parent)commentLoader.load();
-            commentViewController = commentLoader.<CommentViewController>getController();        
+            commentViewController = commentLoader.<CommentViewController>getController();   
+            commentViewController.FillValues(publication.getPublicationList().get(i));
             sp.setContent(pane);
-            pane.add(coment, i, 0);
+            pane.add(coment, 0, i);
             counter ++;
         }
         
@@ -78,13 +80,27 @@ public class PublicationViewController implements Initializable {
         CommentController commentController;
         coment = (Parent)commentLoader.load();
         commentController = commentLoader.<CommentController>getController();        
+        commentController.setUser(homeController.getUser());
+        commentController.setPublication(publication);
+        commentController.fillValues();
+        commentController.setPublicationController(this);
         sp.setContent(pane);
-        pane.add(coment, counter, 0);
+        pane.add(coment, 0, counter);
+        try{
         iImage.setImage(imagetools.showImage(((Text) publication).getPhoto()));
+        }
+       catch(java.lang.NullPointerException e){
+           System.out.println("dolor");
+       }
         tText.setText(((Text) publication).getText());
-        
-        
     }
-    
-    
+
+    public HomeController getHomeController() {
+        return homeController;
+    }
+
+    public void setHomeController(HomeController homeController) {
+        this.homeController = homeController;
+    }
+
 }

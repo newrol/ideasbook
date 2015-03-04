@@ -93,6 +93,7 @@ public class HomeController implements Initializable {
             publicationsView.add((Parent)publicationsviewLoader.get(i).load());
             publicationsViewController.add(publicationsviewLoader.get(i).<PublicationViewController>getController());
             publicationsViewController.get(i).setPublication(user.getPublicationList().get(i));
+            publicationsViewController.get(i).setHomeController(this);
             publicationsViewController.get(i).fillPublication(user.getPublicationList().get(i));
             pane.addRow(i+1, publicationsView.get(i));
         }        
@@ -103,7 +104,7 @@ public class HomeController implements Initializable {
      * @param user
      * @throws IOException 
      */
-    private void friendWall(User friend) throws IOException{
+    public void friendWall(User friend) throws IOException{
         GridPane pane = new GridPane();
         sc.setContent(pane);                      
         FXMLLoader publicationLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/UserInfo.fxml"));
@@ -189,5 +190,23 @@ public class HomeController implements Initializable {
    public void friendsReport(){
        System.out.println("sii");
        new JasperTestFX();
+   }
+   
+   public void showFriends() throws IOException{
+       GridPane pane = new GridPane();
+       sc.setContent(pane);
+       for(int i = 0; i < user.getRequestList().size(); i++){
+        FXMLLoader userAdminPaneLodader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/FriendTag.fxml"));
+        Parent friendTag;
+        FriendTagController friendTagController;
+        friendTag = (Parent)userAdminPaneLodader.load();
+        friendTagController = userAdminPaneLodader.<FriendTagController>getController();
+        friendTagController.setUser(user.getRequestList().get(i).getUser1());
+        friendTagController.setHomeController(this);
+        friendTagController.setOwner(user);
+        friendTagController.fillValues();
+        pane.add(friendTag, 0, i);
+       }
+       
    }
 }

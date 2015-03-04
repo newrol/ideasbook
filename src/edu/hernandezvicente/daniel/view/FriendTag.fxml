@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="183.0" prefWidth="898.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="edu.hernandezvicente.daniel.control.FriendTagController">
+   <children>
+      <ImageView fx:id="vPhoto" fitHeight="150.0" fitWidth="200.0" layoutX="7.0" layoutY="12.0" onMouseClicked="#showUser" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="lName" layoutX="260.0" layoutY="21.0" onMouseClicked="#showUser" prefHeight="17.0" prefWidth="224.0" text="Label" />
+      <Label fx:id="lMail" layoutX="260.0" layoutY="58.0" prefHeight="17.0" prefWidth="224.0" text="Label" />
+      <Button fx:id="bFriendship" layoutX="260.0" layoutY="107.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="235.0" text="Button" />
+   </children>
+</AnchorPane>

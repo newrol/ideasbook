@@ -28,6 +28,7 @@ public class CommentController implements Initializable {
     private PublicationCatalog publicationCatalog;
     private User user;
     private Publication Publication;
+    private PublicationViewController publicationController;
     
     @FXML
     private ImageView iUserImage;
@@ -52,12 +53,15 @@ public class CommentController implements Initializable {
         lUsername.setText(user.getName());
     }
     
-    public void addComment(){
+    public void addComment() throws IOException{
         Publication comment = new Text();
         comment.setUser(user);
         ((Text) comment).setText(tComment.getText());
-        publicationCatalog.addPublication(Publication);
+        
+        publicationCatalog.addPublication(comment);
         publicationCatalog.addCommentToPublication(Publication, comment);
+      //  publicationController.fillPublication(Publication);
+        
     }
     
     public Publication getPublication() {
@@ -75,4 +79,14 @@ public class CommentController implements Initializable {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public PublicationViewController getPublicationController() {
+        return publicationController;
+    }
+
+    public void setPublicationController(PublicationViewController publicationController) {
+        this.publicationController = publicationController;
+    }
+    
+    
 }

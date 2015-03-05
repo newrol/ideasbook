@@ -35,6 +35,16 @@
             <Button layoutX="18.0" layoutY="205.0" mnemonicParsing="false" onAction="#panelUserValues" prefHeight="25.0" prefWidth="220.0" text="Información de usuario" />
             <Label layoutX="18.0" layoutY="264.0" prefHeight="24.0" prefWidth="144.0" text="Informes:" />
             <Button layoutX="24.0" layoutY="296.0" mnemonicParsing="false" onAction="#friendsReport" prefHeight="25.0" prefWidth="175.0" text="Mis amigos" />
+            <MenuBar layoutX="8.0" layoutY="539.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                        <MenuItem fx:id="mHelp" mnemonicParsing="false" text="Unspecified Action" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
          </children>
       </Pane>
    </left>

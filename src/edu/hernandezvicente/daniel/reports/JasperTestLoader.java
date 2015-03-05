@@ -39,7 +39,7 @@ public class JasperTestLoader {
         Connection conexion = (Connection) DriverManager.getConnection(CON_STR, USER, PASS);
         
         JasperDesign jasperDesign = JRXmlLoader.load(new File(REPORT_JXML));
-        //JasperReport jasperReport 
+        JasperReport jasperReport; 
         reporte = JasperCompileManager.compileReport(jasperDesign);
         HashMap params = new HashMap();
         params.put("USER_ID", 1);

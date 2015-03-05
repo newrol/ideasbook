@@ -12,6 +12,7 @@ import edu.hernandezvicente.daniel.reports.JasperTestFX;
 import edu.hernandezvicente.daniel.tools.ImageTools;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +22,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javax.help.HelpSetException;
 /**
  * FXML Controller class
  *
@@ -48,6 +51,9 @@ public class HomeController implements Initializable {
     
    @FXML
    private TextField tSearchUser;
+   
+   @FXML
+   private MenuItem mHelp;
     
     /**
      * Initializes the controller class.
@@ -135,7 +141,7 @@ public class HomeController implements Initializable {
         this.mainController = mainController;
     }
     
-    public void exit() throws IOException{
+    public void exit() throws IOException, MalformedURLException, HelpSetException{
         mainController.showLogin();
     }
     
@@ -203,10 +209,14 @@ public class HomeController implements Initializable {
         friendTagController = userAdminPaneLodader.<FriendTagController>getController();
         friendTagController.setUser(user.getRequestList().get(i).getUser1());
         friendTagController.setHomeController(this);
-        friendTagController.setOwner(user);
+        friendTagController.setUser(user);
         friendTagController.fillValues();
         pane.add(friendTag, 0, i);
        }
        
    }
+   
+    public void setHelpButton() throws MalformedURLException, HelpSetException{
+        mainController.addHelpButton(mHelp,"home");
+    }
 }

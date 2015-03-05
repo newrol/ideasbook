@@ -9,6 +9,7 @@ import com.iesdealquerias.dam.ideasbook.User;
 import edu.hernandezvicente.daniel.persistance.model.UserCatalog;
 import edu.hernandezvicente.daniel.tools.ImageTools;
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -25,10 +26,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.paint.Color;
+import javax.help.HelpSetException;
 import org.controlsfx.validation.Severity;
 import org.controlsfx.validation.ValidationMessage;
 import org.controlsfx.validation.ValidationResult;
@@ -86,6 +90,8 @@ public class LoginController implements Initializable {
     @FXML
     private Label mistakelbl;
     
+    @FXML
+    private MenuItem mHelp;
     /**
      * Initializes the controller class.
      */
@@ -98,6 +104,7 @@ public class LoginController implements Initializable {
         createValidation(tMail, mistakelbl, v1);
         createValidation(tMail2, mistakelbl, v1);
         createValidation(tPassword, mistakelbl, v1);
+        
     }
     
     
@@ -137,7 +144,7 @@ public class LoginController implements Initializable {
     }
     
     
-    public void validateUser() throws IOException{
+    public void validateUser() throws IOException, MalformedURLException, HelpSetException{
         User user = new User();
         user.setName(tLogginUser.getText());
         user.setPassword(tLogginPassword.getText());
@@ -273,6 +280,10 @@ public class LoginController implements Initializable {
      */
     private Color getColor(Severity s) {
         return ( s == Severity.WARNING ) ? Color.DARKGOLDENROD : Color.RED;
+    }
+    
+    public void setHelpButton() throws MalformedURLException, HelpSetException{
+        mainController.addHelpButton(mHelp,"login");
     }
 }   
 

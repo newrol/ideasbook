@@ -23,6 +23,15 @@
             <TextField id="tLogginUser" fx:id="tLogginUser" layoutX="681.0" layoutY="57.0" onKeyTyped="#testEnableLogin" />
             <TextField id="tLogginPassword" fx:id="tLogginPassword" layoutX="854.0" layoutY="57.0" onKeyTyped="#testEnableLogin" />
             <Label contentDisplay="TOP" layoutX="854.0" layoutY="35.0" text="Contraseña" textFill="WHITE" />
+            <MenuBar layoutX="9.0" layoutY="8.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                        <MenuItem fx:id="mHelp" mnemonicParsing="false" text="Help" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
          </children>
       </Pane>
    </top>

@@ -35,6 +35,7 @@
             <Button layoutX="18.0" layoutY="205.0" mnemonicParsing="false" onAction="#panelUserValues" prefHeight="25.0" prefWidth="220.0" text="Información de usuario" />
             <Label layoutX="18.0" layoutY="264.0" prefHeight="24.0" prefWidth="144.0" text="Informes:" />
             <Button layoutX="24.0" layoutY="296.0" mnemonicParsing="false" onAction="#friendsReport" prefHeight="25.0" prefWidth="175.0" text="Mis amigos" />
+            <Button layoutX="24.0" layoutY="339.0" mnemonicParsing="false" onAction="#friendsReport" prefHeight="25.0" prefWidth="175.0" text="Mis Publicaciones" />
          </children>
       </Pane>
    </left>

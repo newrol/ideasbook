@@ -8,7 +8,7 @@ package edu.hernandezvicente.daniel.control;
 import com.iesdealquerias.dam.ideasbook.User;
 import edu.hernandezvicente.daniel.persistance.model.FriendShipCatalog;
 import edu.hernandezvicente.daniel.persistance.model.UserCatalog;
-import edu.hernandezvicente.daniel.reports.JasperTestFX;
+import edu.hernandezvicente.daniel.reports.FriendsReportFX;
 import edu.hernandezvicente.daniel.tools.ImageTools;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -195,7 +195,7 @@ public class HomeController implements Initializable {
    
    public void friendsReport(){
        System.out.println("sii");
-       new JasperTestFX();
+       new FriendsReportFX();
    }
    
    public void showFriends() throws IOException{
@@ -212,11 +212,6 @@ public class HomeController implements Initializable {
         friendTagController.setUser(user);
         friendTagController.fillValues();
         pane.add(friendTag, 0, i);
-       }
-       
+       }   
    }
-   
-    public void setHelpButton() throws MalformedURLException, HelpSetException{
-        mainController.addHelpButton(mHelp,"home");
-    }
 }

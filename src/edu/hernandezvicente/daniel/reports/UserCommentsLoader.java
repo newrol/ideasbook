@@ -24,12 +24,12 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
  *
  * @author juanvi
  */
-public class JasperTestLoader {
+public class UserCommentsLoader {
     private static final String CON_STR = "jdbc:mysql://localhost:3306/ideasbook";
     private static final String USER = "root";
     private static final String PASS = "12345";
-    private static final String REPORT = "src\\edu\\hernandezvicente\\daniel\\reports\\UserFriends.jasper";    
-    private static final String REPORT_JXML = "src\\edu\\hernandezvicente\\daniel\\reports\\UserFriends.jrxml";    
+    private static final String REPORT = "src\\edu\\hernandezvicente\\daniel\\reports\\UserComments.jasper";    
+    private static final String REPORT_JXML = "src\\edu\\hernandezvicente\\daniel\\reports\\UserComments.jrxml";    
 
     private JasperReport reporte;
     private JasperPrint jasperPrint;

@@ -10,6 +10,7 @@ import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.concurrent.Task;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -27,7 +28,7 @@ import net.sf.jasperreports.engine.JasperPrint;
  *
  * @author juanvi
  */
-public class JasperTestFX extends Application {
+public class UserCommentsReportFX extends Application {
     private final VBox root = new VBox();
     private final HBox up   = new HBox();
     private final ProgressBar bar = new ProgressBar();
@@ -70,13 +71,13 @@ public class JasperTestFX extends Application {
                     File file = new File("\\src\\edu\\hernandezvicente\\daniel\\reports\\UserFr.html");
                     
                     // Crea el fichero HTML
-                    JasperTestLoader jtl = new JasperTestLoader();
+                    FriendsReportLoader jtl = new FriendsReportLoader();
                     jtl.load();
                     
                     JasperPrint jasperPrint = jtl.getJasperPrint();
                     JasperExportManager.exportReportToHtmlFile(jasperPrint, file.getPath());
                 } catch (Exception ex) {
-                    Logger.getLogger(JasperTestFX.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(FriendsReportFX.class.getName()).log(Level.SEVERE, null, ex);
                 }        
     }
     
@@ -90,13 +91,13 @@ public class JasperTestFX extends Application {
                     file = new File("\\src\\edu\\hernandezvicente\\daniel\\reports\\UserFr.html");
                     
                     // Crea el fichero HTML
-                    JasperTestLoader jtl = new JasperTestLoader();
+                    FriendsReportLoader jtl = new FriendsReportLoader();
                     jtl.load();
                     
                     JasperPrint jasperPrint = jtl.getJasperPrint();
                     JasperExportManager.exportReportToHtmlFile(jasperPrint, file.getPath());
                 } catch (Exception ex) {
-                    Logger.getLogger(JasperTestFX.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(FriendsReportFX.class.getName()).log(Level.SEVERE, null, ex);
                 } finally {
                     return null;
                 }
@@ -117,7 +118,7 @@ public class JasperTestFX extends Application {
                     root.getChildren().removeIf((o) -> o instanceof WebView);
                     root.getChildren().add(view);
                 } catch (MalformedURLException ex) {
-                    Logger.getLogger(JasperTestFX.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(FriendsReportFX.class.getName()).log(Level.SEVERE, null, ex);
                     failed();
                 }
             }

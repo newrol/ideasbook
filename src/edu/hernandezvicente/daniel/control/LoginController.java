@@ -141,6 +141,7 @@ public class LoginController implements Initializable {
         user.setPhoto(new ImageTools().wrapImage(defaultImage));
         user.setSince(new Date());
         userCatalog.CreateUser(user);
+        System.out.println("asdfdsaf");
     }
     
     
@@ -153,7 +154,7 @@ public class LoginController implements Initializable {
         
         try{
             user = userCatalog.validateUser(user);
-            mainController.showUserWall(user);
+            mainController.showHome(user);
         }
         catch(javax.persistence.NoResultException e){
             System.out.println("no existe el usuario");
@@ -280,10 +281,6 @@ public class LoginController implements Initializable {
      */
     private Color getColor(Severity s) {
         return ( s == Severity.WARNING ) ? Color.DARKGOLDENROD : Color.RED;
-    }
-    
-    public void setHelpButton() throws MalformedURLException, HelpSetException{
-        mainController.addHelpButton(mHelp,"login");
     }
 }   
 

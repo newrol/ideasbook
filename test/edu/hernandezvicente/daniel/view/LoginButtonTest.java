@@ -15,6 +15,7 @@ import static com.athaydes.automaton.assertion.AutomatonMatcher.selected;
 import static com.athaydes.automaton.assertion.AutomatonMatcher.visible;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import jdk.nashorn.internal.runtime.Timing;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -56,13 +57,11 @@ public class LoginButtonTest {
     @Test
     public void testFeature() {
         
-            //assertThat(fxer.clickOn("bJoin"), visible());
-          //  fxer.clickOn("tLogginUser").type("user");
-           // fxer.clickOn("tLogginPassword").type("password");
-            //assertThat(fxer.clickOn("bJoin"),);
-            fxer.clickOn("cDay").moveTo(700, 600, Speed.SLOW).click();
-            fxer.clickOn("cMonth").moveTo(780, 600, Speed.SLOW).click();
-            fxer.clickOn("cYear").moveTo(850, 600, Speed.SLOW).click();
+           org.junit.Assert.assertTrue(((Button)fxer.getAt("bjoin")).isDisabled());
+            fxer.clickOn("tLogginUser").type("user");
+            fxer.clickOn("tLogginPassword").type("password");
+            org.junit.Assert.assertTrue(!((Button)fxer.getAt("bjoin")).isDisabled()); 
+
 //
 //        assertThat(fxer.getAt("my-tf"), hasText("Hello World!"));
     }

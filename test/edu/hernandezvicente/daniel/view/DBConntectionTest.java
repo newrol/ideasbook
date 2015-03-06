@@ -9,10 +9,12 @@ package edu.hernandezvicente.daniel.view;
 import com.athaydes.automaton.FXApp;
 import com.athaydes.automaton.FXer;
 import com.athaydes.automaton.Speed;
+import com.iesdealquerias.dam.ideasbook.User;
 import edu.hernandezvicente.daniel.persistance.model.UserCatalog;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
+import static junit.framework.Assert.assertEquals;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
@@ -45,6 +47,7 @@ public class DBConntectionTest{
    
     @Test
     public void testFeature() {
+        
             fxer.clickOn("tName").type("user");
             fxer.clickOn("tMail1").type("user");
             fxer.clickOn("tMail2").type("user");
@@ -53,5 +56,8 @@ public class DBConntectionTest{
             fxer.clickOn("cMonth").moveTo(780, 600, Speed.SLOW).click();
             fxer.clickOn("cYear").moveTo(850, 600, Speed.SLOW).click();
             fxer.clickOn("bRegister");
+            fxer.clickOn("tName");
+            User user = new UserCatalog().searchUserByName("a");
+            assertEquals("a" , user.getEmail()); 
     }
 }

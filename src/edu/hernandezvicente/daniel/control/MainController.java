@@ -12,6 +12,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -37,7 +39,7 @@ import jfx.messagebox.MessageBox;
  */
 public class MainController extends Application {
     Stage stage;
-    private FXMLLoader loginLoader, homeLoader;     // FXML instances to control it later.         
+    private FXMLLoader fXMLLoader;     // FXML instances to control it later.         
     private Parent login, home;                     // Parent to control FXML views.
     private Scene sceneLogin, sceneHome;            // Diferent app scenes.
     private LoginController loginController;        //Login view Contoller.
@@ -62,7 +64,6 @@ public class MainController extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage; //Charge the stage to control views. 
-
         trucoVentanaVar = new JFrame();
         trucoVentanaHome = new JFrame();
         trucoVentanaLogin = new JFrame();
@@ -86,9 +87,9 @@ public class MainController extends Application {
         trucoVentanaVar = trucoVentanaHome;
         // login = null; // kill useless reference to liberate memory.
         //Charge fxml references in memory to acces them
-        homeLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/Home.fxml"));
-        home = (Parent)homeLoader.load();
-        homeController = homeLoader.<HomeController>getController(); //Set Login view Controller to add params.
+        fXMLLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/Home.fxml"));
+        home = (Parent)fXMLLoader.load();
+        homeController = fXMLLoader.<HomeController>getController(); //Set Login view Controller to add params.
         homeController.setMainController(this);
         homeController.setUser(user);
         homeController.refresh(); //refres interface to show user values.
@@ -106,9 +107,10 @@ public class MainController extends Application {
         trucoVentanaVar = trucoVentanaLogin;
          // kill useless reference to liberate memory in case that it exist.
         //Charge fxml references in memory to acces them
-        loginLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/Login.fxml"));
-        login = (Parent)loginLoader.load();
-        loginController = loginLoader.<LoginController>getController(); //Set home view controller to add params.
+        fXMLLoader = new FXMLLoader(getClass().getResource("/edu/hernandezvicente/daniel/view/Login.fxml"));
+        fXMLLoader.setResources(ResourceBundle.getBundle("edu.hernandezvicente.daniel.bundles.MyBundle", new Locale("en", "EN")));
+        login = (Parent)fXMLLoader.load();
+        loginController = fXMLLoader.<LoginController>getController(); //Set home view controller to add params.
         loginController.setMainController(this);
         //show steps
         sceneLogin = new Scene(login);
@@ -141,4 +143,5 @@ public class MainController extends Application {
             }
         });
     }    
+    
 }

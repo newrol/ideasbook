@@ -18,11 +18,11 @@
                   <Font name="Calibri" size="45.0" />
                </font>
             </Label>
-            <Button fx:id="bJoin" defaultButton="true" disable="true" layoutX="1027.0" layoutY="57.0" mnemonicParsing="false" onAction="#validateUser" prefHeight="25.0" prefWidth="64.0" text="entrar" />
-            <Label layoutX="681.0" layoutY="35.0" text="Usuario" textFill="WHITE" />
+            <Button fx:id="bJoin" defaultButton="true" disable="true" layoutX="1027.0" layoutY="57.0" mnemonicParsing="false" onAction="#validateUser" prefHeight="25.0" prefWidth="64.0" text="%login" />
+            <Label layoutX="681.0" layoutY="35.0" text="%user" textFill="WHITE" />
             <TextField id="tLogginUser" fx:id="tLogginUser" layoutX="681.0" layoutY="57.0" onKeyTyped="#testEnableLogin" />
             <TextField id="tLogginPassword" fx:id="tLogginPassword" layoutX="854.0" layoutY="57.0" onKeyTyped="#testEnableLogin" />
-            <Label contentDisplay="TOP" layoutX="854.0" layoutY="35.0" text="Contraseña" textFill="WHITE" />
+            <Label contentDisplay="TOP" layoutX="854.0" layoutY="35.0" text="%password" textFill="WHITE" />
          </children>
       </Pane>
    </top>
@@ -39,32 +39,32 @@
    <center>
       <Pane id="rigthPanel" prefHeight="534.0" prefWidth="789.0" styleClass="body" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="28.0" layoutY="22.0" prefHeight="72.0" prefWidth="191.0" text="Registrarte">
+            <Label layoutX="28.0" layoutY="22.0" prefHeight="72.0" prefWidth="191.0" text="%registerButton">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <TextField id="tName" fx:id="tName" layoutX="29.0" layoutY="94.0" prefHeight="39.0" prefWidth="384.0" promptText="Nombre">
+            <TextField id="tName" fx:id="tName" layoutX="29.0" layoutY="94.0" prefHeight="39.0" prefWidth="384.0" promptText="%name">
                <font>
                   <Font size="18.0" />
                </font></TextField>
-            <TextField id="tMail1" fx:id="tMail" layoutX="28.0" layoutY="153.0" prefHeight="39.0" prefWidth="387.0" promptText="Correo electrónico">
+            <TextField id="tMail1" fx:id="tMail" layoutX="28.0" layoutY="153.0" prefHeight="39.0" prefWidth="387.0" promptText="%mail">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></TextField>
-            <TextField id="tMail2" fx:id="tMail2" layoutX="28.0" layoutY="208.0" prefHeight="39.0" prefWidth="387.0" promptText="Vuelve a introducir el correo electrónico">
+            <TextField id="tMail2" fx:id="tMail2" layoutX="28.0" layoutY="208.0" prefHeight="39.0" prefWidth="387.0" promptText="%mail1">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></TextField>
-            <Label layoutX="28.0" layoutY="322.0" prefHeight="27.0" prefWidth="176.0" text="Fecha de nacimiento">
+            <Label layoutX="28.0" layoutY="322.0" prefHeight="27.0" prefWidth="176.0" text="%nacdate">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <ComboBox id="cDay" fx:id="cDay" layoutX="28.0" layoutY="359.0" prefHeight="25.0" prefWidth="58.0" promptText="D" />
-            <ComboBox id="cMonth" fx:id="cMonth" layoutX="95.0" layoutY="359.0" prefHeight="25.0" prefWidth="58.0" promptText="M" />
-            <ComboBox id="cYear" fx:id="cYear" layoutX="161.0" layoutY="359.0" prefHeight="25.0" prefWidth="70.0" promptText="A" />
-            <Button id="bRegister" fx:id="bRegister" layoutX="31.0" layoutY="418.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="42.0" prefWidth="185.0" styleClass="registerButton" text="Registrarte" textFill="WHITE">
+            <ComboBox id="cDay" fx:id="cDay" layoutX="28.0" layoutY="359.0" prefHeight="25.0" prefWidth="58.0" promptText="%day" />
+            <ComboBox id="cMonth" fx:id="cMonth" layoutX="95.0" layoutY="359.0" prefHeight="25.0" prefWidth="58.0" promptText="%month" />
+            <ComboBox id="cYear" fx:id="cYear" layoutX="161.0" layoutY="359.0" prefHeight="25.0" prefWidth="70.0" promptText="%year" />
+            <Button id="bRegister" fx:id="bRegister" layoutX="31.0" layoutY="418.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="42.0" prefWidth="185.0" styleClass="registerButton" text="%registerButton" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
@@ -72,7 +72,7 @@
                   <Glow />
                </effect>
             </Button>
-            <PasswordField id="tPassword" fx:id="tPassword" layoutX="28.0" layoutY="267.0" prefHeight="39.0" prefWidth="387.0" promptText="Contraseña">
+            <PasswordField id="tPassword" fx:id="tPassword" layoutX="28.0" layoutY="267.0" prefHeight="39.0" prefWidth="387.0" promptText="%password">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
